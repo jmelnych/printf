@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/02 16:40:26 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/02 16:43:35 by imelnych         ###   ########.fr       */
+/*   Created: 2017/10/23 11:49:50 by imelnych          #+#    #+#             */
+/*   Updated: 2018/01/03 19:31:20 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "../printflib.h"
 
-# include <string.h>
-
-size_t		ft_strlen(const char *str);
-
-#endif
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}

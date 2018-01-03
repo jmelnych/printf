@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   find_spcfctr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/19 11:01:51 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/03 17:20:40 by imelnych         ###   ########.fr       */
+/*   Created: 2018/01/03 17:08:25 by imelnych          #+#    #+#             */
+/*   Updated: 2018/01/03 17:22:04 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../printflib.h"
+#include "printflib.h"
 
-size_t		ft_strlen(const char *str)
+int find_spcfctr(char c)
 {
-	size_t i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
+	if (c == 'd')
+		return (1);
+	if (c == 's')
+		return (2);
+	return (0);
 }

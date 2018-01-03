@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   align.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/19 11:01:51 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/03 17:20:40 by imelnych         ###   ########.fr       */
+/*   Created: 2018/01/03 17:45:44 by imelnych          #+#    #+#             */
+/*   Updated: 2018/01/03 18:29:12 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../printflib.h"
+#include "printflib.h"
 
-size_t		ft_strlen(const char *str)
+int align(char c)
 {
-	size_t i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
+	if (c == '-')
+		return (1);
+	if (c == '+')
+		return (2);
+	if (c == ' ')
+		return (3);
+	if (c == '#')
+		return (4);
+	if (c == '0')
+		return (5);
+	return (0);
 }

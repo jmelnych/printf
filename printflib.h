@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   printflib.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/19 11:01:51 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/03 17:20:40 by imelnych         ###   ########.fr       */
+/*   Created: 2018/01/02 16:40:26 by imelnych          #+#    #+#             */
+/*   Updated: 2018/01/03 19:31:19 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../printflib.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-size_t		ft_strlen(const char *str)
-{
-	size_t i;
+# include <string.h>
+# include <unistd.h>
+# include <stdio.h> //delme!!
+# include <stdarg.h>
+# include <stdlib.h>
 
-	i = 0;
-	while (str[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
+int			ft_printf(const char *fmt, ...);
+void		ft_putchar(char c);
+size_t		ft_strlen(const char *str);
+char		*ft_strdup(const char *s1);
+void		ft_putnbr(int nb);
+int			align(char c);
+int			find_spcfctr(char c);
+
+#endif

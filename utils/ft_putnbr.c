@@ -1,25 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/19 11:01:51 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/03 17:20:40 by imelnych         ###   ########.fr       */
+/*   Created: 2017/10/23 12:07:50 by imelnych          #+#    #+#             */
+/*   Updated: 2018/01/03 19:28:39 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../printflib.h"
 
-size_t		ft_strlen(const char *str)
+void	ft_putnbr(int nb)
 {
-	size_t i;
+	int a;
+	int b;
 
-	i = 0;
-	while (str[i] != '\0')
+	if (nb < 0)
 	{
-		i++;
+		ft_putchar('-');
+		if (nb == -2147483648)
+		{
+			ft_putchar('2');
+			nb = nb % 1000000000;
+		}
+		nb = nb * (-1);
 	}
-	return (i);
+	if ((nb / 10) != 0)
+	{
+		a = nb % 10;
+		b = nb / 10;
+		ft_putnbr(b);
+		ft_putchar(a + '0');
+	}
+	if ((nb / 10) == 0)
+	{
+		ft_putchar(nb + '0');
+	}
 }

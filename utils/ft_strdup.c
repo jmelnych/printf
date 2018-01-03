@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/19 11:01:51 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/03 17:20:40 by imelnych         ###   ########.fr       */
+/*   Created: 2017/10/19 11:07:44 by imelnych          #+#    #+#             */
+/*   Updated: 2018/01/03 19:15:25 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../printflib.h"
 
-size_t		ft_strlen(const char *str)
+char	*ft_strdup(const char *s1)
 {
-	size_t i;
+	int		i;
+	size_t	len;
+	char	*dest;
 
 	i = 0;
-	while (str[i] != '\0')
+	len = ft_strlen(s1);
+	dest = (char*)malloc(sizeof(*dest) * (len + 1));
+	if (!dest)
+		return (NULL);
+	while (s1[i] != '\0')
 	{
+		dest[i] = s1[i];
 		i++;
 	}
-	return (i);
+	dest[i] = '\0';
+	return (dest);
 }

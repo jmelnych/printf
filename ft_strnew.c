@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find_spcfctr.c                                     :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/03 17:08:25 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/03 20:51:29 by imelnych         ###   ########.fr       */
+/*   Created: 2017/10/21 15:21:34 by imelnych          #+#    #+#             */
+/*   Updated: 2018/01/04 16:06:56 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printflib.h"
 
-int find_spcfctr(char c)
+char	*ft_strnew(size_t size)
 {
-	if (c == 'd')
-		return (1);
-	if (c == 's')
-		return (2);
-	if (c == 'z')
-		return (30);
-	if (c == 'u')
-		return (3);
-	if (c == 'c')
-		return (4);
-	if (c == 'f')
-		return (5);
-	return (0);
+	char *str;
+
+	str = (char*)malloc(size + 1);
+	if (!str)
+		return (NULL);
+	ft_bzero(str, size + 1);
+	return (str);
 }

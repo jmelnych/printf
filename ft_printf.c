@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 13:20:40 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/03 20:52:21 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/04 12:26:46 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ int ft_printf(const char *fmt, ...)
 		 		c = va_arg(args, int);
 		 		write(1, &c, 1);
 		 	}
-		 	if (spec == 5)
-		 		//handling float?
+		 	//if (spec == 5)
+		 		//handling float
 		}
 		else
 			write(1, fmt, 1);

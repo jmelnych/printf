@@ -1,18 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/23 11:49:50 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/03 19:31:20 by imelnych         ###   ########.fr       */
+/*   Created: 2017/10/23 12:07:50 by imelnych          #+#    #+#             */
+/*   Updated: 2018/01/04 12:27:30 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../printflib.h"
+#include "printflib.h"
 
-void	ft_putchar(char c)
+void	ft_putnbr(int nb)
 {
-	write(1, &c, 1);
+	int a;
+	int b;
+
+	if (nb < 0)
+	{
+		ft_putchar('-');
+		if (nb == -2147483648)
+		{
+			ft_putchar('2');
+			nb = nb % 1000000000;
+		}
+		nb = nb * (-1);
+	}
+	if ((nb / 10) != 0)
+	{
+		a = nb % 10;
+		b = nb / 10;
+		ft_putnbr(b);
+		ft_putchar(a + '0');
+	}
+	if ((nb / 10) == 0)
+	{
+		ft_putchar(nb + '0');
+	}
 }

@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_precs.c                                       :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/04 19:20:49 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/05 16:17:56 by imelnych         ###   ########.fr       */
+/*   Created: 2017/10/21 10:18:14 by imelnych          #+#    #+#             */
+/*   Updated: 2018/01/05 16:15:29 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printflib.h"
 
-void	fill_precs(const char *fmt, list_spec *current)
+int	ft_isdigit(char c)
 {
-	int i;
-
-	i = 0;
-	current->precs = 0;
-	while (fmt[i] != '\0' && !check_type(fmt[i]))
-	{
-		if (fmt[i] == '.' && ft_isdigit(fmt[i + 1]))
-		{
-			current->precs = ft_atoi(fmt + i + 1);
-			break;
-		}
-		i++; 
-	}
+	if ((c > 47) && (c < 58))
+		return (1);
+	return (0);
 }

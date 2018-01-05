@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 13:20:40 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/04 19:11:55 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/05 15:55:30 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int ft_printf(const char *fmt, ...)
 	va_start(args, fmt); //to where, what-last param
 	while (*fmt)
 	{
-		if (*fmt == '%')
+		if (*fmt == '%' && *(fmt + 1) != '%')
 		{
 		 	fmt++;
 		 	save_spec(fmt);
@@ -53,7 +53,7 @@ int ft_printf(const char *fmt, ...)
 int main(void)
 {
 	//write(1, "α\n", 3);
-	ft_printf("one === % 10s two === %s\n",  "qwerty", "abc");
+	ft_printf("one === %#05.3d two === %s\n",  529, "abc");
 	//printf("one === %s\n", "qwerty");
 
 	

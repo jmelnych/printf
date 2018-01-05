@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 17:42:39 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/05 16:09:18 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/05 17:12:59 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,8 @@ int	save_spec(const char *fmt)
 	list_spec current;
 
 	fill_align(fmt, &current);
-	// int i;
-
-	// i = 0;
-	// while (fmt[i] != '%' && fmt[i] != '\0')
-	// {
-		
-	// 	i++;
-	// }
-	//check for "*"
 	fill_width(fmt, &current);
 	fill_precs(fmt, &current);
+	fill_mod(fmt, &current);
 	return (0);
 }

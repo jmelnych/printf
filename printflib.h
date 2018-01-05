@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 16:40:26 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/05 16:15:47 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/05 17:13:39 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef	struct
 	int		flag[FL];
 	int		width;
 	int		precs;
-	int		len;
+	int		mod;
 	char	type;
 }			list_spec;
 
@@ -45,6 +45,7 @@ char		*ft_itoa_base(int nb, int base);
 void		fill_align(const char *fmt, list_spec *current);
 void	 	fill_width(const char *fmt, list_spec *current);
 void		fill_precs(const char *fmt, list_spec *current);
+void		fill_mod(const char *fmt, list_spec *current);
 
 
 #endif

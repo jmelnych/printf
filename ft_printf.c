@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 13:20:40 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/08 17:37:07 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/08 17:50:58 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int main(void)
 {
 	//printf("one === %-+11.5d two === %s\n", 529, "abc"); //+00529____
 	//write(1, "α\n", 3);
-	ft_printf("MINE\tone === %10.5d two === %s\n", 521, "abc");
-	printf("ORIG\tone === %10.5d two === %s\n", 521, "abc");
+	ft_printf("MINE\tone === %-12.5d two === %s\n", 521, "abc");
+	printf("ORIG\tone === %-12.5d two === %s\n", 521, "abc");
 	//printf("one === %s\n", "qwerty");	
 	return (0);
 }

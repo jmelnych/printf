@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 15:43:07 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/08 17:37:44 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/08 17:51:19 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,17 @@ void	print_digits(va_list *args, list_spec cr)
 	cr.buf = (va_arg(*args, int));
 	if (cr.precs && cr.width)
 	{
-		if (cr.flag[0] == 0)
+		if (cr.flag[0] != 1) // if no -
 		{
-			cr.flag[1] == 1 ? (i = cr.width - 1) : (i = cr.width);
+			cr.flag[1] == 1 ? (i = cr.width - 1) : (i = cr.width); //if I have space
 			print_spaces(cr, i);
 			if (cr.precs > ft_numlen(cr.buf))
 			{
 				print_zeros(cr);
 			}
+		ft_putnbr(cr.buf);
 		}
-		else
+	else
 		{
 			cr.flag[1] == 1 ? (i = cr.width - 1) : (i = cr.width);
 			if (cr.precs > ft_numlen(cr.buf))
@@ -59,21 +60,13 @@ void	print_digits(va_list *args, list_spec cr)
 			}
 			print_spaces(cr, i);
 		}
-
-		
-		cr.flag[1] == 1 ? write(1, "+", 1) : i;
-		ft_putnbr(cr.buf);
+		//cr.flag[1] == 1 ? write(1, "+", 1) : i;
 	}
 	if (cr.precs && !cr.width)
 	{
 		if (cr.precs > ft_numlen(cr.buf))
 		{
-			i = 0;
-			while (i < (cr.precs - ft_numlen(cr.buf)))
-			{
-				write(1, "0", 1);
-				i++;
-			}
+			print_zeros(cr);
 			ft_putnbr(cr.buf);
 		}
 	}

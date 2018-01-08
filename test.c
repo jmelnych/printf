@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_width.c                                       :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/04 19:02:53 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/05 15:58:12 by imelnych         ###   ########.fr       */
+/*   Created: 2018/01/08 16:11:19 by imelnych          #+#    #+#             */
+/*   Updated: 2018/01/08 16:24:41 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printflib.h"
+#include <stdio.h>
 
-void fill_width(const char *fmt, list_spec *current)
+void ft_change(char **c)
 {
-	int i;
+	**(c++) = 'd';
+	**c = 'y';
+	printf("%s\n", *c);
+}
 
-	i = 0;
-	while (fmt[i] != '\0' && !check_type(fmt[i]))
-	{
-		if(fmt[i] > '0' && fmt[i] < '9')
-			break;
-		i++;
-	}
-		current->width = ft_atoi(fmt + i);
+int main()
+{
+	char str;
+
+ str = malloc(4);
+ str = "abc\0"
+
+	ft_change(&str);
+	printf("%s\n", str);
+	return 0;
 }

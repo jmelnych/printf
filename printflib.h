@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 16:40:26 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/05 17:13:39 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/08 16:46:21 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # define FL 3
-# define TP "sSpdDioOuUxXcC"
+# define TP "sSpdDioOuUxXcC" //
 
 typedef	struct
 {
@@ -28,6 +28,8 @@ typedef	struct
 	int		precs;
 	int		mod;
 	char	type;
+	int		buf;
+	char	*str;
 }			list_spec;
 
 void		ft_bzero(void *s, size_t n);
@@ -37,15 +39,19 @@ size_t		ft_strlen(const char *str);
 char		*ft_strnew(size_t size);
 void		ft_putnbr(int nb); //delme?!!
 int			ft_isdigit(char c);
+int			ft_numlen(int n);
 
 int			ft_printf(const char *fmt, ...);
-int			save_spec(const char *fmt);
+void		print_digits(va_list *args, list_spec cr);
+void		print_str(va_list *args, list_spec cr);
+int			main_call(const char **fmt, va_list *args);
+list_spec	save_spec(const char **fmt);
 int			check_type(char c);
+void		fill_align(const char *fmt, list_spec *cr);
+void	 	fill_width(const char *fmt, list_spec *cr);
+void		fill_precs(const char *fmt, list_spec *cr);
+void		fill_mod(const char *fmt, list_spec *cr);
+void		fill_type(const char **fmt, list_spec *cr);
 char		*ft_itoa_base(int nb, int base);
-void		fill_align(const char *fmt, list_spec *current);
-void	 	fill_width(const char *fmt, list_spec *current);
-void		fill_precs(const char *fmt, list_spec *current);
-void		fill_mod(const char *fmt, list_spec *current);
-
 
 #endif

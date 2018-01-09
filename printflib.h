@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 16:40:26 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/08 16:46:21 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/09 14:34:33 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ typedef	struct
 	int		precs;
 	int		mod;
 	char	type;
-	int		buf;
 	char	*str;
 }			list_spec;
 
@@ -36,6 +35,7 @@ void		ft_bzero(void *s, size_t n);
 int			ft_atoi(const char *str);
 void		ft_putchar(char c);
 size_t		ft_strlen(const char *str);
+char		*ft_strdup(const char *s1);
 char		*ft_strnew(size_t size);
 void		ft_putnbr(int nb); //delme?!!
 int			ft_isdigit(char c);
@@ -52,6 +52,6 @@ void	 	fill_width(const char *fmt, list_spec *cr);
 void		fill_precs(const char *fmt, list_spec *cr);
 void		fill_mod(const char *fmt, list_spec *cr);
 void		fill_type(const char **fmt, list_spec *cr);
-char		*ft_itoa_base(int nb, int base);
+char		*ft_itoabase(uintmax_t c, int sys, int rg);
 
 #endif

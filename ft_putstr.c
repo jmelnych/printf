@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/19 11:01:51 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/11 14:16:06 by imelnych         ###   ########.fr       */
+/*   Created: 2017/10/23 11:53:15 by imelnych          #+#    #+#             */
+/*   Updated: 2018/01/11 14:11:26 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printflib.h"
 
-size_t		ft_strlen(const char *str)
+void	ft_putstr(char const *s)
 {
-	size_t i;
+	int i;
 
 	i = 0;
-	while (str[i] != '\0')
+	if (s)
 	{
-		i++;
+		while (s[i] != '\0')
+			write(1, &s[i++], 1);
 	}
-	return (i);
 }

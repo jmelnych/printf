@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/08 16:11:19 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/08 16:24:41 by imelnych         ###   ########.fr       */
+/*   Created: 2017/10/19 13:45:41 by imelnych          #+#    #+#             */
+/*   Updated: 2018/01/11 14:15:08 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "printflib.h"
 
-void ft_change(char **c)
+char	*ft_strcat(char *s1, const char *s2)
 {
-	**(c++) = 'd';
-	**c = 'y';
-	printf("%s\n", *c);
-}
+	size_t i;
+	size_t len1;
 
-int main()
-{
-	char str;
-
- str = malloc(4);
- str = "abc\0"
-
-	ft_change(&str);
-	printf("%s\n", str);
-	return 0;
+	i = 0;
+	len1 = ft_strlen(s1);
+	while (s2[i] != '\0')
+	{
+		s1[len1] = s2[i];
+		len1++;
+		i++;
+	}
+	s1[len1] = '\0';
+	return (s1);
 }

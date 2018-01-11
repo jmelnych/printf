@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/19 11:01:51 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/11 14:16:06 by imelnych         ###   ########.fr       */
+/*   Created: 2017/10/22 10:18:11 by imelnych          #+#    #+#             */
+/*   Updated: 2018/01/11 13:51:46 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printflib.h"
 
-size_t		ft_strlen(const char *str)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t i;
+	size_t		len_s1;
+	size_t		len_s2;
+	char		*dest;
+	size_t		i;
 
 	i = 0;
-	while (str[i] != '\0')
+	if (!s1 || !s2)
+		return (NULL);
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
+	dest = ft_strnew(len_s1 + len_s2);
+	if (!dest)
+		return (NULL);
+	while (i < len_s1)
 	{
+		dest[i] = s1[i];
 		i++;
 	}
-	return (i);
+	return (ft_strcat(dest, s2));
 }

@@ -17,8 +17,7 @@ list_spec	save_spec(const char **fmt)
 	list_spec cr;
 
 	fill_align(*fmt, &cr);
-	fill_width(*fmt, &cr);
-	fill_precs(*fmt, &cr);
+	fill_width_precs(*fmt, &cr);
 	fill_mod(*fmt, &cr);
 	fill_type(fmt, &cr);
 	//printf(" %d\t, %d\t, %d\t, %c\n", cr.width, cr.precs, cr.mod, cr.type);
@@ -33,6 +32,9 @@ int main_call(const char **fmt, va_list *args)
 	cr = save_spec(fmt);
 	if (cr.type == 'd' || cr.type == 'i' || cr.type == 'D')
 		print_digits(args, cr);
+	if (cr.type == 'u' || cr.type == 'U' || cr.type == 'o' || cr.type == 'O'
+		|| cr.type == 'c' || cr.type == 'X' || cr.type == 'b')
+		print_digits_unsigned(args, cr, (int)cr.type);
 	if (cr.type == 's')
 		print_str(args, cr);
 	return (0);

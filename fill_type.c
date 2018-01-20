@@ -17,6 +17,7 @@ void	fill_align(const char *fmt, list_spec *cr)
 	int i;
 	
 	i = 0;
+	//printf("OUR FMT: %s\n, -1 === %c", fmt, fmt[i-1]);
 	while (i < FL)
 		cr->flag[i++] = 0;
 	i = 0;
@@ -24,11 +25,11 @@ void	fill_align(const char *fmt, list_spec *cr)
 	{
 		if (fmt[i] == '-')
 			cr->flag[0] = 1;
-		else if (fmt[i] == '0' && i - 1 >= 0 && !ft_isdigit(fmt[i - 1]))
+		else if (fmt[i] == '0' && !ft_isdigit(fmt[i - 1]) && !cr->flag[0])
 			cr->flag[0] = 2;
 		if (fmt[i] == '+')
 			cr->flag[1] = 1;
-		else if (fmt[i] == ' ')
+		else if (fmt[i] == ' ' && !cr->flag[1])
 			cr->flag[1] = 2;
 		if (fmt[i] == '#')
 			cr->flag[2] = 1;
@@ -36,36 +37,51 @@ void	fill_align(const char *fmt, list_spec *cr)
 	}
 }
 
-void	fill_width(const char *fmt, list_spec *cr)
+void	fill_width_precs(const char *fmt, list_spec *cr)
 {
 	int i;
 
 	i = 0;
+	cr->width = 0;
+	cr->precs = -1;
 	while (fmt[i] != '\0' && !check_type(fmt[i]))
 	{
-		if(ft_isdigit(fmt[i]) && fmt[i - 1] != '.')
-			break;
-		i++;
-	}
-		cr->width = ft_atoi(fmt + i);
-}
-
-void	fill_precs(const char *fmt, list_spec *cr)
-{
-	int i;
-
-	i = 0;
-	cr->precs = 0;
-	while (fmt[i] != '\0' && !check_type(fmt[i]))
-	{
-		if (fmt[i] == '.' && ft_isdigit(fmt[i + 1]))
+		if(ft_isdigit(fmt[i]))
 		{
-			cr->precs = ft_atoi(fmt + i + 1);
-			break;
+			cr->width = ft_atoi(fmt + i);
+			while (ft_isdigit(fmt[i]))
+				i++;
 		}
-		i++; 
+		else if (fmt[i] == '.')
+		{
+			i++;
+			cr->precs = 0;
+			if (ft_isdigit(fmt[i]))
+				cr->precs = ft_atoi(fmt + i);
+			while (ft_isdigit(fmt[i]))
+				i++;
+		}
+		else
+			i++;
 	}
 }
+
+// void	fill_precs(const char *fmt, list_spec *cr)
+// {
+// 	int i;
+
+// 	i = 0;
+// 	cr->precs = 0;
+// 	while (fmt[i] != '\0' && !check_type(fmt[i]))
+// 	{
+// 		if (fmt[i] == '.' && ft_isdigit(fmt[i + 1]))
+// 		{
+// 			cr->precs = ft_atoi(fmt + i + 1);
+// 			break;
+// 		}
+// 		i++; 
+// 	}
+// }
 
 void	fill_mod(const char *fmt, list_spec *cr)
 {

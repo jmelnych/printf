@@ -40,7 +40,7 @@ char		*ft_strnew(size_t size);
 void		ft_putnbr(int nb); //delme?!!
 void		ft_putstr(char const *s);
 int			ft_isdigit(char c);
-int			ft_numlen(int n);
+int			ft_numlen(intmax_t n, int c);
 char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_strcat(char *s1, const char *s2);
 
@@ -51,8 +51,7 @@ int			main_call(const char **fmt, va_list *args);
 list_spec	save_spec(const char **fmt);
 int			check_type(char c);
 void		fill_align(const char *fmt, list_spec *cr);
-void	 	fill_width(const char *fmt, list_spec *cr);
-void		fill_precs(const char *fmt, list_spec *cr);
+void	 	fill_width_precs(const char *fmt, list_spec *cr);
 void		fill_mod(const char *fmt, list_spec *cr);
 void		fill_type(const char **fmt, list_spec *cr);
 char		*ft_itoabase(uintmax_t c, int sys, int rg);

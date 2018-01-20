@@ -12,31 +12,14 @@
 
 #include "printflib.h"
 
-void	print_spaces(list_spec cr, int i)
-{
-	while (i > (cr.precs > (int)ft_strlen(cr.str) ? cr.precs : (int)ft_strlen(cr.str)))
-		{
-			write(1, " ", 1);
-			i--;
-		}
-}
-
-void	print_zeros(list_spec cr)
-{
-	int i;
-
-	i = 0;
-	while (i < (cr.precs - (int)ft_strlen(cr.str)))
-	{
-		write(1, "0", 1);
-		i++;
-	}
-}
-
 void	print_digits(va_list *args, list_spec cr)
 {
 	int i;
+	char c[2];
 
+	c[0] = '0';
+	c[1] = '\0';
+	i = 0;
 	if (cr.mod == 4)
 		cr.str = ft_itoabase(va_arg(*args, intmax_t), 1, 0);
 	else if (cr.mod == 3)
@@ -47,32 +30,60 @@ void	print_digits(va_list *args, list_spec cr)
 		cr.str = ft_itoabase((short)va_arg(*args, int), 1, 0);
 	else if (cr.mod == 1)
 		cr.str = ft_itoabase((char)va_arg(*args, int), 1, 0);
-	if (cr.precs) //if I have precision 
+	if (cr.precs != -1) //if I have precision 
 	{
-		if (cr.flag[0] != 1) // no -
+		if (cr.flag[0] == 2)
+			cr.flag[0] = 0; //switch off 0 flag if we have presc.
+		if (*cr.str == '-')
 		{
-			i = (cr.flag[1] == 1 ? cr.width - 1 : cr.width); //if I have space
-			print_spaces(cr, i);
+			*cr.str = '0';
 			while (cr.precs > (int)ft_strlen(cr.str))
-			{
-				cr.str = ft_strjoin("0", cr.str);
-			}
-			if (cr.flag[0] == 2)
-				cr.flag[0] = 0;
-			ft_putstr(cr.str);
+				cr.str = ft_strjoin("0", cr.str); // 2 str need free
+			cr.str = ft_strjoin("-", cr.str);
 		}
-	// if (cr.width)
+		else
+		{
+			while (cr.precs > (int)ft_strlen(cr.str))
+				cr.str = ft_strjoin("0", cr.str); // 2 str need free
+		}
+	}
+	if (cr.flag[1] == 1 && *cr.str != '-')
+		cr.str = ft_strjoin("+", cr.str);
+	if (cr.flag[1] == 2 && *cr.str != '-')
+		cr.str = ft_strjoin(" ", cr.str);
+	if (cr.width)
+	{
+		while (cr.flag[0] == 1 && cr.width > (int)ft_strlen(cr.str))
+			cr.str = ft_strjoin(cr.str, " ");
+		while (cr.flag[0] != 2 && cr.width > (int)ft_strlen(cr.str))
+			cr.str = ft_strjoin(" ", cr.str);
+		if (cr.flag[0] == 2)
+		{
+			if ((*cr.str == ' ' || *cr.str == '-' || *cr.str == '+')
+				&& cr.width > (int)ft_strlen(cr.str))
+			{
+				i = 1;
+				c[0] = *cr.str;
+				*cr.str = '0';
+			}
+			while (cr.width > (int)ft_strlen(cr.str) + i)
+				cr.str = ft_strjoin("0", cr.str);
+			if (cr.width > (int)ft_strlen(cr.str))
+				cr.str = ft_strjoin(c, cr.str);
+		}
+	}
+	write(1, cr.str, ft_strlen(cr.str));
+	// {
+	// 	i = (cr.flag[1] == 1 ? cr.width - 1 : cr.width);
+	// 	if (cr.precs > ft_strlen(cr.str))
 	// 	{
-	// 		i = (cr.flag[1] == 1 ? cr.width - 1 : cr.width);
-	// 		if (cr.precs > ft_strlen(cr.str))
-	// 		{
-	// 			print_zeros(cr);
-	// 			ft_putnbr(cr.str);
-	// 		}
-	// 		print_spaces(cr, i);
+	// 		print_zeros(cr);
+	// 		ft_putnbr(cr.str);
 	// 	}
-	// 	//cr.flag[1] == 1 ? write(1, "+", 1) : i;
+	// 	print_spaces(cr, i);
 	// }
+		//cr.flag[1] == 1 ? write(1, "+", 1) : i;
+	//}
 	// if (cr.precs && !cr.width)
 	// {
 	// 	if (cr.precs > ft_strlen(cr.str))
@@ -80,5 +91,44 @@ void	print_digits(va_list *args, list_spec cr)
 	// 		print_zeros(cr);
 	// 		ft_putnbr(cr.str);
 	// 	}
-	 }
+	
+}
+
+void	print_digits_unsigned(va_list *args, list_spec cr, int c)
+{
+	int i;
+	int system;
+
+	system = 0;
+	if (c == 'o' || c == 'O')
+		system = 8;
+	else if (c == 'x' || c == 'X')
+		system = 16;
+	else if (c == 'b')
+		system = 2;
+	if (cr.mod == 4)
+		cr.str = ft_itoabase(va_arg(*args, intmax_t), system, c);
+	else if (cr.mod == 3)
+		cr.str = ft_itoabase(va_arg(*args, long), system, c);
+	else if (cr.mod == 0)
+		cr.str = ft_itoabase(va_arg(*args, int), system, c);
+	else if (cr.mod == 2)
+		cr.str = ft_itoabase((short)va_arg(*args, int), system, c);
+	else if (cr.mod == 1)
+		cr.str = ft_itoabase((char)va_arg(*args, int), system, c);
+	// if (cr.precs) //if I have precision 
+	// {
+	// 	if (cr.flag[0] != 1) // no -
+	// 	{
+	// 		i = (cr.flag[1] == 1 ? cr.width - 1 : cr.width); //if I have space
+	// 		print_spaces(cr, i);
+	// 		while (cr.precs > (int)ft_strlen(cr.str))
+	// 		{
+	// 			cr.str = ft_strjoin("0", cr.str);
+	// 		}
+	// 		if (cr.flag[0] == 2)
+	// 			cr.flag[0] = 0;
+	// 		ft_putstr(cr.str);
+	// 	}
+	//  }
 }

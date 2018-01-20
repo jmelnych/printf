@@ -20,8 +20,7 @@ static	char	*transbase(uintmax_t nbr, int base, int reg)
 	char		buf[65];
 
 	tmp = 0;
-	if (reg)
-		tmp = ((reg < 91 && reg > 64) ? 55 : 87);
+	tmp = ((reg < 91 && reg > 64) ? 65 : 97);
 	if (base < 2 && base > 36)
 		return (0);
 	i = 64;
@@ -34,16 +33,16 @@ static	char	*transbase(uintmax_t nbr, int base, int reg)
 		nbr = nbr / base;
 		i--;
 		if (ost > 9)
-			buf[i] = ost + tmp;
+			buf[i] = ost + tmp - 10;
 		else
-			buf[i] = ost + 48;
+			buf[i] = ost + '0';
 	}
 	return (ft_strdup(buf + i));
 }
 
 static	char	*sigitoa(intmax_t c, char *res, int i)
 {
-	i = ft_numlen(c);
+	i = ft_numlen(c, 1);
 	if (c < -9223372036854775807)
 		return (ft_strdup("-9223372036854775808"));
 	if (!(res = (char *)malloc(i + 1)))
@@ -79,7 +78,7 @@ char			*ft_itoabase(uintmax_t c, int sys, int rg)
 		return (sigitoa(c, res, 0));
 	else if (sys)
 		return (transbase(c, sys, rg));
-	i = ft_numlen(c);
+	i = ft_numlen(c, 0);
 	if (!(res = (char *)malloc(i + 1)))
 		return (0);
 	res[i] = '\0';

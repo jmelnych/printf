@@ -73,62 +73,54 @@ void	print_digits(va_list *args, list_spec cr)
 		}
 	}
 	write(1, cr.str, ft_strlen(cr.str));
-	// {
-	// 	i = (cr.flag[1] == 1 ? cr.width - 1 : cr.width);
-	// 	if (cr.precs > ft_strlen(cr.str))
-	// 	{
-	// 		print_zeros(cr);
-	// 		ft_putnbr(cr.str);
-	// 	}
-	// 	print_spaces(cr, i);
-	// }
-		//cr.flag[1] == 1 ? write(1, "+", 1) : i;
-	//}
-	// if (cr.precs && !cr.width)
-	// {
-	// 	if (cr.precs > ft_strlen(cr.str))
-	// 	{
-	// 		print_zeros(cr);
-	// 		ft_putnbr(cr.str);
-	// 	}
-	
 }
 
-void	print_digits_unsigned(va_list *args, list_spec cr, int c)
+void	print_digits_unsigned(va_list *args, list_spec cr, int type)
 {
-	int i;
 	int system;
+	char c[3];
 
+	c[0] = '0';
+	c[1] = (char)type;
+	c[2] = '\0';
 	system = 0;
-	if (c == 'o' || c == 'O')
+	if (type == 'o' || type == 'O')
 		system = 8;
-	else if (c == 'x' || c == 'X')
+	else if (type == 'x' || type == 'X')
 		system = 16;
-	else if (c == 'b')
+	else if (type == 'b')
 		system = 2;
 	if (cr.mod == 4)
-		cr.str = ft_itoabase(va_arg(*args, intmax_t), system, c);
+		cr.str = ft_itoabase(va_arg(*args, uintmax_t), system, type);
 	else if (cr.mod == 3)
-		cr.str = ft_itoabase(va_arg(*args, long), system, c);
+		cr.str = ft_itoabase(va_arg(*args, unsigned long), system, type);
 	else if (cr.mod == 0)
-		cr.str = ft_itoabase(va_arg(*args, int), system, c);
+		cr.str = ft_itoabase(va_arg(*args, unsigned int), system, type);
 	else if (cr.mod == 2)
-		cr.str = ft_itoabase((short)va_arg(*args, int), system, c);
+		cr.str = ft_itoabase((unsigned short)va_arg(*args, int), system, type);
 	else if (cr.mod == 1)
-		cr.str = ft_itoabase((char)va_arg(*args, int), system, c);
-	// if (cr.precs) //if I have precision 
-	// {
-	// 	if (cr.flag[0] != 1) // no -
-	// 	{
-	// 		i = (cr.flag[1] == 1 ? cr.width - 1 : cr.width); //if I have space
-	// 		print_spaces(cr, i);
-	// 		while (cr.precs > (int)ft_strlen(cr.str))
-	// 		{
-	// 			cr.str = ft_strjoin("0", cr.str);
-	// 		}
-	// 		if (cr.flag[0] == 2)
-	// 			cr.flag[0] = 0;
-	// 		ft_putstr(cr.str);
-	// 	}
-	//  }
+		cr.str = ft_itoabase((unsigned char)va_arg(*args, int), system, type);
+	if (cr.precs != -1) //if I have precision 
+	{
+		if (cr.flag[0] == 2)
+			cr.flag[0] = 0; //switch off 0 flag if we have presc.
+		while (cr.precs > (int)ft_strlen(cr.str))
+			cr.str = ft_strjoin("0", cr.str); // 2 str need free
+	}
+	if (cr.flag[2] == 1 && (type == 'x' || type == 'X'))
+		cr.width -= 2;
+	while (cr.flag[0] == 2 && cr.width > (int)ft_strlen(cr.str))
+		cr.str = ft_strjoin("0", cr.str);
+	if (cr.flag[2] == 1 && (type == 'o' || type == 'O') && *cr.str != '0')
+		cr.str = ft_strjoin("0", cr.str);
+	while (cr.flag[0] == 1 && cr.width > (int)ft_strlen(cr.str))
+		cr.str = ft_strjoin(cr.str, " ");
+	if (cr.flag[2] == 1 && (type == 'x' || type == 'X'))
+	{
+		cr.str = ft_strjoin(c, cr.str);
+		cr.width += 2;
+	}
+	while (cr.flag[0] != 2 && cr.width > (int)ft_strlen(cr.str))
+		cr.str = ft_strjoin(" ", cr.str);
+	write(1, cr.str, ft_strlen(cr.str));
 }

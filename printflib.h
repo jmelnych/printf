@@ -46,6 +46,7 @@ char		*ft_strcat(char *s1, const char *s2);
 
 int			ft_printf(const char *fmt, ...);
 void		print_digits(va_list *args, list_spec cr);
+void		print_digits_unsigned(va_list *args, list_spec cr, int type);
 void		print_str(va_list *args, list_spec cr);
 int			main_call(const char **fmt, va_list *args);
 list_spec	save_spec(const char **fmt);

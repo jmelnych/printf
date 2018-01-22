@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/29 13:14:41 by vgladush          #+#    #+#             */
+/*   Created: 2017/12/29 13:14:41 by imelnych          #+#    #+#             */
 /*   Updated: 2018/01/09 14:36:08 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -40,52 +40,52 @@ static	char	*transbase(uintmax_t nbr, int base, int reg)
 	return (ft_strdup(buf + i));
 }
 
-static	char	*sigitoa(intmax_t c, char *res, int i)
+static	char	*sigitoa(intmax_t nb, char *res, int i)
 {
-	i = ft_numlen(c, 1);
-	if (c < -9223372036854775807)
+	i = ft_numlen(nb, 1);
+	if (nb < -9223372036854775807)
 		return (ft_strdup("-9223372036854775808"));
 	if (!(res = (char *)malloc(i + 1)))
 		return (0);
 	res[i] = '\0';
-	if (c < 0 && (c = -c))
+	if (nb < 0 && (nb = -nb))
 	{
 		res[0] = '-';
 		while (i-- > 1)
 		{
-			res[i] = c % 10 + 48;
-			c /= 10;
+			res[i] = nb % 10 + 48;
+			nb /= 10;
 		}
 	}
 	else
 	{
 		while (i--)
 		{
-			res[i] = c % 10 + 48;
-			c /= 10;
+			res[i] = nb % 10 + '0';
+			nb /= 10;
 		}
 	}
 	return (res);
 }
 
-char			*ft_itoabase(uintmax_t c, int sys, int rg)
+char			*ft_itoabase(uintmax_t nb, int sys, int rg)
 {
 	int			i;
 	char		*res;
 
 	res = NULL;
 	if (sys == 1)
-		return (sigitoa(c, res, 0));
+		return (sigitoa(nb, res, 0));
 	else if (sys)
-		return (transbase(c, sys, rg));
-	i = ft_numlen(c, 0);
+		return (transbase(nb, sys, rg));
+	i = ft_numlen(nb, 0);
 	if (!(res = (char *)malloc(i + 1)))
 		return (0);
 	res[i] = '\0';
 	while (i--)
 	{
-		res[i] = c % 10 + 48;
-		c /= 10;
+		res[i] = nb % 10 + 48;
+		nb /= 10;
 	}
 	return (res);
 }

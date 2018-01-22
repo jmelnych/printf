@@ -33,7 +33,7 @@ int main_call(const char **fmt, va_list *args)
 	if (cr.type == 'd' || cr.type == 'i' || cr.type == 'D')
 		print_digits(args, cr);
 	if (cr.type == 'u' || cr.type == 'U' || cr.type == 'o' || cr.type == 'O'
-		|| cr.type == 'c' || cr.type == 'X' || cr.type == 'b')
+		|| cr.type == 'c' || cr.type == 'X' || cr.type == 'b' || cr.type == 'x')
 		print_digits_unsigned(args, cr, (int)cr.type);
 	if (cr.type == 's')
 		print_str(args, cr);

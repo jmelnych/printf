@@ -42,10 +42,10 @@ int main(void)
 {
 	//printf("one === %-+11.5d two === %s\n", 529, "abc"); //+00529____
 	//write(1, "α\n", 3);
-	printf("ORIGIN: % ll08d\n", 522);
-	ft_printf("MY FNC: %ll0 8d\n", 522); // +522
-	printf("ORIGIN: %0 ll8d\n", -522);
-	ft_printf("MY FNC: %0 ll8d\n", -522); // -522
+	printf("ORIGIN: % #+.4o\n", 522);
+	ft_printf("MY FNC: %# +.4o\n", 522); // +522
+	printf("ORIGIN: %0# 15.10X\n", -522);
+	ft_printf("MY FNC: %0 #15.10X\n", -522); // -522
 	// ft_printf("MINE\tone === %12.3d two === %s\n", 521, "abc");
 	// printf("ORIG\tone === %12.3d two === %s\n", 521, "abc");
 	//printf("one === %s\n", "qwerty");	

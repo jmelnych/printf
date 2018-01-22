@@ -17,7 +17,6 @@ void	fill_align(const char *fmt, list_spec *cr)
 	int i;
 	
 	i = 0;
-	//printf("OUR FMT: %s\n, -1 === %c", fmt, fmt[i-1]);
 	while (i < FL)
 		cr->flag[i++] = 0;
 	i = 0;

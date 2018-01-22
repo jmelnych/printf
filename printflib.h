@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 16:40:26 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/11 14:15:19 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/22 17:33:54 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # define FL 3
-# define TP "sSpdDioOuUxXcC" //
+# define TP "sSpdDioOuUxXcCb" //
+
+
 
 typedef	struct
 {
@@ -44,6 +46,7 @@ int			ft_numlen(intmax_t n, int c);
 char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_strcat(char *s1, const char *s2);
 
+void		print_address(va_list *args, list_spec cr);
 int			ft_printf(const char *fmt, ...);
 void		print_digits(va_list *args, list_spec cr);
 void		print_digits_unsigned(va_list *args, list_spec cr, int type);

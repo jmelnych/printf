@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 13:20:40 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/11 13:28:57 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/22 17:46:46 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,12 @@ int main(void)
 {
 	//printf("one === %-+11.5d two === %s\n", 529, "abc"); //+00529____
 	//write(1, "α\n", 3);
-	printf("ORIGIN: % #+.4o\n", 522);
-	ft_printf("MY FNC: %# +.4o\n", 522); // +522
-	printf("ORIGIN: %0# 15.10X\n", -522);
-	ft_printf("MY FNC: %0 #15.10X\n", -522); // -522
+	printf("ORIGIN: % 08.5p\n", 5858);
+	ft_printf("MY FNC: % 08.5p\n", 5858); // +522
+	printf("ORIGIN: % +U\n", -222221111522);
+	ft_printf("MY FNC: % +U\n", -222221111522);
+	//printf("ORIGIN: %0# 15.10X\n", -522);
+	//ft_printf("MY FNC: %0 #15.10X\n", -522); // -522
 	// ft_printf("MINE\tone === %12.3d two === %s\n", 521, "abc");
 	// printf("ORIG\tone === %12.3d two === %s\n", 521, "abc");
 	//printf("one === %s\n", "qwerty");	
@@ -56,7 +58,8 @@ int main(void)
 //str_join free
 //
 
- // 0 1 -2 -1    0 1 -2 -1 
- // 0 1  2  3    0 1  2  3
- // 0 1  2  3    4 5  6  7 
+//sS
+
+//cC
+
 

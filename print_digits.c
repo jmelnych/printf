@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 15:43:07 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/11 14:17:07 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/22 17:46:04 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	print_digits(va_list *args, list_spec cr)
 	i = 0;
 	if (cr.mod == 4)
 		cr.str = ft_itoabase(va_arg(*args, intmax_t), 1, 0);
-	else if (cr.mod == 3)
+	else if (cr.mod == 3 || cr.type == 'D')
 		cr.str = ft_itoabase(va_arg(*args, long), 1, 0);
 	else if (cr.mod == 0)
 		cr.str = ft_itoabase(va_arg(*args, int), 1, 0);
@@ -92,7 +92,7 @@ void	print_digits_unsigned(va_list *args, list_spec cr, int type)
 		system = 2;
 	if (cr.mod == 4)
 		cr.str = ft_itoabase(va_arg(*args, uintmax_t), system, type);
-	else if (cr.mod == 3)
+	else if (cr.mod == 3 || type == 'O' || type == 'U')
 		cr.str = ft_itoabase(va_arg(*args, unsigned long), system, type);
 	else if (cr.mod == 0)
 		cr.str = ft_itoabase(va_arg(*args, unsigned int), system, type);
@@ -116,11 +116,8 @@ void	print_digits_unsigned(va_list *args, list_spec cr, int type)
 	while (cr.flag[0] == 1 && cr.width > (int)ft_strlen(cr.str))
 		cr.str = ft_strjoin(cr.str, " ");
 	if (cr.flag[2] == 1 && (type == 'x' || type == 'X'))
-	{
 		cr.str = ft_strjoin(c, cr.str);
-		cr.width += 2;
-	}
-	while (cr.flag[0] != 2 && cr.width > (int)ft_strlen(cr.str))
+	while (cr.flag[0] != 2 && cr.width + 2 > (int)ft_strlen(cr.str))
 		cr.str = ft_strjoin(" ", cr.str);
 	write(1, cr.str, ft_strlen(cr.str));
 }

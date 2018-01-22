@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/29 13:14:41 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/09 14:36:08 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/22 17:29:20 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static	char	*sigitoa(intmax_t nb, char *res, int i)
 		res[0] = '-';
 		while (i-- > 1)
 		{
-			res[i] = nb % 10 + 48;
+			res[i] = nb % 10 + '0';
 			nb /= 10;
 		}
 	}
@@ -84,7 +84,7 @@ char			*ft_itoabase(uintmax_t nb, int sys, int rg)
 	res[i] = '\0';
 	while (i--)
 	{
-		res[i] = nb % 10 + 48;
+		res[i] = nb % 10 + '0';
 		nb /= 10;
 	}
 	return (res);

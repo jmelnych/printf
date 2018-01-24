@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 14:11:13 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/08 14:12:21 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/24 19:56:14 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_numlen(intmax_t n, int c)
 	if (!c)
 		return (ft_unumlen(n));
 	len = 1;
-	if (n == -9223372036854775808)
+	if (n < -9223372036854775807)
 		return (20);
 	if (n < 0)
 	{

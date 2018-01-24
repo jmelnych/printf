@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 13:20:40 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/22 19:07:31 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/24 20:34:44 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int main(void)
 {
 	//printf("one === %-+11.5d two === %s\n", 529, "abc"); //+00529____
 	//write(1, "α\n", 3);
-	printf("ORIGIN: %020.4s\n", "hello world");
-	ft_printf("MY FNC: %20.4s\n", "hello world"); // +522
+	printf("ORIGIN: %-05.8c\n", 'a');
+	ft_printf("MY FNC: %-05.8c\n", 'a'); // +522
 	printf("ORIGIN: % +U\n", -222221111522);
 	ft_printf("MY FNC: % +U\n", -222221111522);
 	//printf("ORIGIN: %0# 15.10X\n", -522);
@@ -55,11 +55,7 @@ int main(void)
 }
 
 
-//str_join free
-//
-
-//sS
-
-//cC
+//S
+//C
 
 

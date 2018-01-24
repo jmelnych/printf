@@ -6,13 +6,13 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/22 10:18:11 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/19 15:45:18 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/24 19:39:12 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printflib.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin_free(char const *s1, char const *s2)
 {
 	size_t		len_s1;
 	size_t		len_s2;

@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 16:40:26 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/22 19:01:52 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/24 19:55:26 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void		ft_putnbr(int nb); //delme?!!
 void		ft_putstr(char const *s);
 int			ft_isdigit(char c);
 int			ft_numlen(intmax_t n, int c);
-char		*ft_strjoin(char const *s1, char const *s2);
+char		*ft_strjoin_free(char *s1, char *s2, int opt);
 char		*ft_strcat(char *s1, const char *s2);
 void		*ft_memcpy(void *dst, const void *src, size_t n); //del
 void		*ft_memmove(void *dst, const void *src, size_t len); //del

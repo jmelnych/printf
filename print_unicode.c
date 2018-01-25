@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 12:12:00 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/25 17:06:26 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/25 19:09:35 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,12 @@ char	*print_unichar(va_list *args)
 	return (res);
 }
 
+
+char	*print_unistr(va_list *args)
+{
+	
+}
+
 void	print_unicode(va_list *args, list_spec cr)
 {
 	char	*res;
@@ -75,5 +81,17 @@ void	print_unicode(va_list *args, list_spec cr)
 	res = 0;
 	if (cr.type == 'C')
 		res = print_unichar(args);
+	if (cr.type == 'S')
+		res = print_unistr(args);
 	printf("RES === %s\n", res);
 }
+
+
+
+
+
+
+
+
+
+

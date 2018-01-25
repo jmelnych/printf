@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 15:43:07 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/24 19:52:28 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/25 14:20:26 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	print_digits(va_list *args, list_spec cr)
 		cr.str = ft_itoabase((short)va_arg(*args, int), 1, 0);
 	else if (cr.mod == 1)
 		cr.str = ft_itoabase((char)va_arg(*args, int), 1, 0);
-	if (cr.precs != -1) //if I have precision 
+	if (cr.precs != -1) //if I have any precision 
 	{
 		if (cr.flag[0] == 2)
 			cr.flag[0] = 0; //switch off 0 flag if we have presc.
@@ -100,7 +100,7 @@ void	print_digits_unsigned(va_list *args, list_spec cr, int type)
 		cr.str = ft_itoabase((unsigned short)va_arg(*args, int), system, type);
 	else if (cr.mod == 1)
 		cr.str = ft_itoabase((unsigned char)va_arg(*args, int), system, type);
-	if (cr.precs != -1) //if I have precision 
+	if (cr.precs != -1) //if I have any precision 
 	{
 		if (cr.flag[0] == 2)
 			cr.flag[0] = 0; //switch off 0 flag if we have presc.

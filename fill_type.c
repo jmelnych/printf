@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 08:50:58 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/08 15:38:51 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/25 11:43:31 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,23 +64,6 @@ void	fill_width_precs(const char *fmt, list_spec *cr)
 			i++;
 	}
 }
-
-// void	fill_precs(const char *fmt, list_spec *cr)
-// {
-// 	int i;
-
-// 	i = 0;
-// 	cr->precs = 0;
-// 	while (fmt[i] != '\0' && !check_type(fmt[i]))
-// 	{
-// 		if (fmt[i] == '.' && ft_isdigit(fmt[i + 1]))
-// 		{
-// 			cr->precs = ft_atoi(fmt + i + 1);
-// 			break;
-// 		}
-// 		i++; 
-// 	}
-// }
 
 void	fill_mod(const char *fmt, list_spec *cr)
 {

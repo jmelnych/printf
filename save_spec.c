@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 17:42:39 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/24 20:17:07 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/25 13:38:13 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ int main_call(const char **fmt, va_list *args)
 		print_str(args, cr);
 	if (cr.type == 'c')
 		print_c(args, cr);
+	if (cr.type == 'S' || cr.type == 'C')
+		print_unicode(args, cr);
 	return (0);
 }

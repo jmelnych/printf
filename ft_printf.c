@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 13:20:40 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/24 20:34:44 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/25 14:06:23 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,18 @@ int ft_printf(const char *fmt, ...)
 
 int main(void)
 {
+	setlocale(LC_ALL, "en_US.UTF-8");
+	//printf("%d\n", L'ȱ');
 	//printf("one === %-+11.5d two === %s\n", 529, "abc"); //+00529____
 	//write(1, "α\n", 3);
-	printf("ORIGIN: %-05.8c\n", 'a');
-	ft_printf("MY FNC: %-05.8c\n", 'a'); // +522
-	printf("ORIGIN: % +U\n", -222221111522);
-	ft_printf("MY FNC: % +U\n", -222221111522);
-	//printf("ORIGIN: %0# 15.10X\n", -522);
+	//printf("ORIGIN PF: %5.8S\n", L"α\n");
+
+	printf("ORIGIN: %.7C\n", L'α');
+	ft_printf("MY FNC: %.7C\n", L'α'); // +522
+	//printf("ORIGIN PF: % +U\n", -222221111522);
+	//ft_printf("MY FNC: % +U\n", -222221111522);
+	//printf("ORIGIN PF: %0# 15.10X\n", -522);
 	//ft_printf("MY FNC: %0 #15.10X\n", -522); // -522
-	// ft_printf("MINE\tone === %12.3d two === %s\n", 521, "abc");
-	// printf("ORIG\tone === %12.3d two === %s\n", 521, "abc");
-	//printf("one === %s\n", "qwerty");	
 	return (0);
 }
 

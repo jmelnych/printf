@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 13:20:40 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/25 18:59:33 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/26 17:44:40 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int main(void)
 	//printf("ORIGIN PF: %5.8S\n", L"α\n");
 
 	//printf("ORIGIN: %.7C\n", L'α');
-	printf("ORIGIN: %.7S\n", L"αȱ");
-	ft_printf("MY FNC: %.7C\n", L'α'); // +522
+	printf("ORIGIN: %05.3S\n", L"αȱ");
+	ft_printf("MY FNC: %05.3S\n", L"αȱ"); // +522
 	//printf("ORIGIN PF: % +U\n", -222221111522);
 	//ft_printf("MY FNC: % +U\n", -222221111522);
 	//printf("ORIGIN PF: %0# 15.10X\n", -522);

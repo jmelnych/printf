@@ -6,7 +6,7 @@
 #    By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/19 13:18:52 by imelnych          #+#    #+#              #
-#    Updated: 2018/01/25 16:09:46 by imelnych         ###   ########.fr        #
+#    Updated: 2018/01/27 15:13:49 by imelnych         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ FLAGS = -Wall -Wextra -Wextra
 OBJ_DIR	= ./obj
 SRC_files = ft_printf.c ft_putchar.c ft_strlen.c ft_putnbr.c ft_strnew.c \
 			ft_bzero.c ft_isdigit.c save_spec.c ft_atoi.c check_type.c \
-			fill_type.c ft_numlen.c print_digits.c print_str.c ft_itoabase.c \
-			ft_strdup.c ft_strjoin_free.c ft_putstr.c print_address.c \
-			print_unicode.c ft_atoibase.c
+			fill_type.c ft_numlen.c print_digits.c print_digits_unsigned.c \
+			print_str.c ft_itoabase.c ft_strdup.c ft_strjoin_free.c ft_putstr.c\
+			print_address.c print_unichar.c print_unicode.c ft_atoibase.c \
 			
 
 OBJ_files = $(addprefix $(OBJ_DIR)/, $(SRC_files:.c=.o))

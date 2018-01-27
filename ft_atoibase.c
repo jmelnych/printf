@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 16:07:53 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/26 16:24:55 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/27 10:25:20 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	ft_atoibase(char *str)
 {
 	int i;
-	int res;
 	int j;
+	int res;
 
 	j = 1;
 	res = 0;
@@ -25,7 +25,6 @@ int	ft_atoibase(char *str)
 	{
 		res += j * (str[i] - '0');
 		j *= 2;
-		//printf("res === %d\n", res);
 	}
 	return (res);
 }

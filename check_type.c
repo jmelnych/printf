@@ -6,13 +6,13 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/05 15:18:07 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/05 15:31:03 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/27 09:56:58 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printflib.h"
 
-int check_type(char c)
+int	check_type(char c)
 {
 	int i;
 

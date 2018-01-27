@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 09:48:45 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/04 19:11:35 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/27 10:28:45 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	ft_isdelim(char c)
 	return (0);
 }
 
-int	ft_atoi(const char *str)
+int			ft_atoi(const char *str)
 {
 	int		i;
 	int		is_negative;

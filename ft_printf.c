@@ -6,21 +6,16 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 13:20:40 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/26 17:44:40 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/27 15:27:37 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printflib.h"
 
-int ft_printf(const char *fmt, ...)
+int	ft_printf(const char *fmt, ...)
 {
 	va_list args;
 
-	//char *str;
-	//char c;
-
-	//c = 0;
-	//str = 0;
 	va_start(args, fmt); //to where, what-last param
 	while (*fmt)
 	{
@@ -44,20 +39,26 @@ int main(void)
 	//printf("%d\n", L'ȱ');
 	//printf("one === %-+11.5d two === %s\n", 529, "abc"); //+00529____
 	//write(1, "α\n", 3);
-	//printf("ORIGIN PF: %5.8S\n", L"α\n");
-
+	//printf("ORIGIN: %09.8S\n", L"αȱ");
+	//ft_printf("MY FNC: %09.8S\n", L"αȱ");
 	//printf("ORIGIN: %.7C\n", L'α');
-	printf("ORIGIN: %05.3S\n", L"αȱ");
-	ft_printf("MY FNC: %05.3S\n", L"αȱ"); // +522
-	//printf("ORIGIN PF: % +U\n", -222221111522);
+	//printf("ORIGIN: % 9s\n", "blabla");
+	//ft_printf("MY FNC: % 9s\n", "blabla");
+	//printf("ORIGIN: % 9c\n", 'a');
+	//ft_printf("MY FNC: % 9c\n", 'a');
+	//printf("ORIGIN: %05.3S\n", L"αȱ");
+	//ft_printf("MY FNC: %05.3S\n", L"αȱ"); // +522
+	//printf("ORIGIN: % +U\n", -222221111522);
 	//ft_printf("MY FNC: % +U\n", -222221111522);
-	//printf("ORIGIN PF: %0# 15.10X\n", -522);
+	//printf("ORIGIN: %0# 15.10X\n", -522);
 	//ft_printf("MY FNC: %0 #15.10X\n", -522); // -522
+	printf("ORIGIN: %.3d\n", -2222211);
+	ft_printf("MY FNC: %.3d\n", -2222211);
 	return (0);
 }
 
-
-//S
-//C
+	//валится на этом кейсе если (негативный аргумент (-2222))
+	// printf("ORIGIN: %.3d\n", -2222211);
+	// ft_printf("MY FNC: %.3d\n", -2222211); 
 
 

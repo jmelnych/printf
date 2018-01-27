@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 17:42:39 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/25 13:38:13 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/27 10:56:05 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,10 @@ list_spec	save_spec(const char **fmt)
 	fill_width_precs(*fmt, &cr);
 	fill_mod(*fmt, &cr);
 	fill_type(fmt, &cr);
-	//printf(" %d\t, %d\t, %d\t, %c\n", cr.width, cr.precs, cr.mod, cr.type);
 	return (cr);
 }
 
-
-int main_call(const char **fmt, va_list *args)
+int			main_call(const char **fmt, va_list *args)
 {
 	list_spec cr;
 

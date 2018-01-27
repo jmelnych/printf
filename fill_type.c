@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 08:50:58 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/25 11:43:31 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/27 10:32:25 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	fill_align(const char *fmt, list_spec *cr)
 {
 	int i;
-	
+
 	i = 0;
 	while (i < FL)
 		cr->flag[i++] = 0;
@@ -45,7 +45,7 @@ void	fill_width_precs(const char *fmt, list_spec *cr)
 	cr->precs = -1;
 	while (fmt[i] != '\0' && !check_type(fmt[i]))
 	{
-		if(ft_isdigit(fmt[i]))
+		if (ft_isdigit(fmt[i]))
 		{
 			cr->width = ft_atoi(fmt + i);
 			while (ft_isdigit(fmt[i]))
@@ -73,7 +73,8 @@ void	fill_mod(const char *fmt, list_spec *cr)
 	cr->mod = 0;
 	while (fmt[i] != '\0' && !check_type(fmt[i]))
 	{
-		if ((fmt[i] == 'l' && fmt[i + 1] == 'l') || fmt[i] == 'j' || fmt[i] == 'z')
+		if ((fmt[i] == 'l' && fmt[i + 1] == 'l') || fmt[i] == 'j'
+			|| fmt[i] == 'z')
 			cr->mod = 4;
 		else if ((fmt[i] == 'l' && fmt[i + 1] != 'l') && cr->mod < 4)
 			cr->mod = 3;
@@ -93,7 +94,7 @@ void	fill_type(const char **fmt, list_spec *cr)
 	cr->type = 0;
 	while (**fmt != '\0')
 	{
-		if(check_type(**fmt))
+		if (check_type(**fmt))
 		{
 			cr->type = **fmt;
 			break ;

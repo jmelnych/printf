@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 16:40:26 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/27 15:14:39 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/29 18:18:41 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,13 @@
 # include <stdlib.h>
 # include <locale.h>
 # define FL 3
-# define TP "sSpdDioOuUxXcCb"
+# define TP "sSpdDioOuUxXcCb%"
+/* Color palette */
+# define BLUE "\033[1;34m"
+# define GREEN "\033[1;32m"
+# define YELLOW "\033[1;33m"
+# define LBLUE "\033[1;36m"
+# define RESET "\033[0m"
 
 typedef	struct
 {

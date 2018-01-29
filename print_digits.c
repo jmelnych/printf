@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 15:43:07 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/27 16:09:44 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/29 12:35:08 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ static list_spec	if_precision(list_spec cr)
 {
 	if (cr.flag[0] == 2)
 		cr.flag[0] = 0;
-	if (*cr.str == '-')
+	if (*cr.str == '-' && cr.precs > (int)ft_strlen(cr.str))
 	{
 		*cr.str = '0';
+		//printf("CR>STR LEN FOR digit: %d\n", (int)ft_strlen(cr.str));
 		while (cr.precs > (int)ft_strlen(cr.str))
 			cr.str = ft_strjoin_free("0", cr.str, 2);
 		cr.str = ft_strjoin_free("-", cr.str, 2);
@@ -86,5 +87,7 @@ void				print_digits(va_list *args, list_spec cr)
 		cr.str = ft_strjoin_free(" ", cr.str, 2);
 	if (cr.width)
 		cr.str = if_width(cr);
+	ft_putstr(BLUE);
 	write(1, cr.str, ft_strlen(cr.str));
+	ft_putstr(RESET);
 }

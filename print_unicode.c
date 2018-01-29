@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 12:12:00 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/27 13:41:11 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/29 11:07:12 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void		print_unicode(va_list *args, list_spec cr)
 		cr.str = ft_strjoin_free(cr.str, " ", 1);
 	while (!cr.flag[0] && cr.width > (int)ft_strlen(cr.str))
 		cr.str = ft_strjoin_free(" ", cr.str, 2);
+	ft_putstr(LBLUE);
 	write(1, cr.str, ft_strlen(cr.str));
+	ft_putstr(RESET);
 	free(cr.str);
 }

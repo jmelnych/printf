@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 13:20:40 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/27 15:27:37 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/29 18:32:37 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ int	ft_printf(const char *fmt, ...)
 		{
 		 	fmt++;
 		 	main_call(&fmt, &args);
+		}
+		else if (*fmt == '%' && *(fmt + 1) == '%')
+		{
+			write(1, fmt, 1);
+			fmt++;
 		}
 		else
 			write(1, fmt, 1);
@@ -42,23 +47,23 @@ int main(void)
 	//printf("ORIGIN: %09.8S\n", L"αȱ");
 	//ft_printf("MY FNC: %09.8S\n", L"αȱ");
 	//printf("ORIGIN: %.7C\n", L'α');
-	//printf("ORIGIN: % 9s\n", "blabla");
-	//ft_printf("MY FNC: % 9s\n", "blabla");
-	//printf("ORIGIN: % 9c\n", 'a');
-	//ft_printf("MY FNC: % 9c\n", 'a');
-	//printf("ORIGIN: %05.3S\n", L"αȱ");
-	//ft_printf("MY FNC: %05.3S\n", L"αȱ"); // +522
+	// printf("ORIGIN: % 9s\n", "blabla");
+	// ft_printf("MY FNC: % 9s\n", "blabla");
+	// printf("ORIGIN: % 9c\n", 'a');
+	// ft_printf("MY FNC: % 9c\n", 'a');
+	// printf("ORIGIN: %05.3S\n", L"αȱ");
+	// ft_printf("MY FNC: %05.3S\n", L"αȱ"); // +522
 	//printf("ORIGIN: % +U\n", -222221111522);
 	//ft_printf("MY FNC: % +U\n", -222221111522);
 	//printf("ORIGIN: %0# 15.10X\n", -522);
 	//ft_printf("MY FNC: %0 #15.10X\n", -522); // -522
-	printf("ORIGIN: %.3d\n", -2222211);
-	ft_printf("MY FNC: %.3d\n", -2222211);
+	// printf("ORIGIN: %.3d\n", -2222211);
+	// ft_printf("MY FNC: %.3d\n", -2222211);
+	//ft_printf("MY FNC: %.*d\n", -2222211.5);
+
+	printf("ORIGIN: %0*d\n", -8, -211);
+
+	// printf("ORIGIN: %05%\n");
+	// ft_printf("MY FNC: %05%\n");
 	return (0);
 }
-
-	//валится на этом кейсе если (негативный аргумент (-2222))
-	// printf("ORIGIN: %.3d\n", -2222211);
-	// ft_printf("MY FNC: %.3d\n", -2222211); 
-
-

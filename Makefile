@@ -6,12 +6,11 @@
 #    By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/19 13:18:52 by imelnych          #+#    #+#              #
-#    Updated: 2018/01/27 15:13:49 by imelnych         ###   ########.fr        #
+#    Updated: 2018/01/30 15:10:22 by imelnych         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 TARGET = libftprintf.a
-EXC = ft_printf
 FLAGS = -Wall -Wextra -Wextra
 OBJ_DIR	= ./obj
 SRC_files = ft_printf.c ft_putchar.c ft_strlen.c ft_putnbr.c ft_strnew.c \
@@ -35,13 +34,12 @@ run:
 	@$(MAKE) $(OBJ_files)
 	@$(LIB_AR)
 	ranlib $(TARGET)
-	gcc $(FLAGS) -o $(EXC) $(SRC_files) $(TARGET)
+	
 
 clean:
 	/bin/rm -rf $(OBJ_DIR)
 
 fclean: clean
 	/bin/rm -rf $(TARGET)
-	/bin/rm -rf $(EXC)
 
 re: fclean all

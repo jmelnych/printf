@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 08:50:58 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/27 10:32:25 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/30 12:55:49 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,26 @@ void	fill_align(const char *fmt, list_spec *cr)
 	}
 }
 
-void	fill_width_precs(const char *fmt, list_spec *cr)
+static void	fill_precs(const char *fmt, list_spec *cr, va_list *args, int *i)
+{
+	cr->precs = 0;
+	*i += 1;
+	while (fmt[*i])
+	{
+		if (ft_isdigit(fmt[*i]))
+		{
+			cr->precs = ft_atoi(fmt + *i);
+			while (ft_isdigit(fmt[*i]))
+				*i += 1;
+			*i -= 1;
+		}
+		else if (fmt[*i] == '*')
+			cr->precs = va_arg(*args, int);
+		break ;
+	}
+}
+
+void	fill_width(const char *fmt, list_spec *cr, va_list *args)
 {
 	int i;
 
@@ -50,18 +69,16 @@ void	fill_width_precs(const char *fmt, list_spec *cr)
 			cr->width = ft_atoi(fmt + i);
 			while (ft_isdigit(fmt[i]))
 				i++;
+			i--;
+		}
+		else if (fmt[i] == '*')
+		{
+			if ((cr->width = va_arg(*args, int)) < 0 && (cr->flag[0] = 1))
+				cr->width *= -1;
 		}
 		else if (fmt[i] == '.')
-		{
-			i++;
-			cr->precs = 0;
-			if (ft_isdigit(fmt[i]))
-				cr->precs = ft_atoi(fmt + i);
-			while (ft_isdigit(fmt[i]))
-				i++;
-		}
-		else
-			i++;
+			fill_precs(fmt, cr, args, &i);
+		i++;
 	}
 }
 

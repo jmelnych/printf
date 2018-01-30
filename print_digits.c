@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 15:43:07 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/29 12:35:08 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/30 13:19:47 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,18 @@ static	char		*if_width(list_spec cr)
 	return (cr.str);
 }
 
-void				print_digits(va_list *args, list_spec cr)
+void				print_digits(va_list *args, list_spec *cr)
 {
-	cr.str = trans_type_digit(args, cr);
-	if (cr.precs != -1)
-		cr = if_precision(cr);
-	if (cr.flag[1] == 1 && *cr.str != '-')
-		cr.str = ft_strjoin_free("+", cr.str, 2);
-	if (cr.flag[1] == 2 && *cr.str != '-')
-		cr.str = ft_strjoin_free(" ", cr.str, 2);
-	if (cr.width)
-		cr.str = if_width(cr);
+	cr->str = trans_type_digit(args, *cr);
+	if (cr->precs != -1)
+		*cr = if_precision(*cr);
+	if (cr->flag[1] == 1 && *cr->str != '-')
+		cr->str = ft_strjoin_free("+", cr->str, 2);
+	if (cr->flag[1] == 2 && *cr->str != '-')
+		cr->str = ft_strjoin_free(" ", cr->str, 2);
+	if (cr->width)
+		cr->str = if_width(*cr);
 	ft_putstr(BLUE);
-	write(1, cr.str, ft_strlen(cr.str));
+	cr->count += write(1, cr->str, ft_strlen(cr->str));
 	ft_putstr(RESET);
 }

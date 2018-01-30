@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 16:40:26 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/29 18:18:41 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/30 14:45:20 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef	struct
 	int		mod;
 	char	type;
 	char	*str;
+	int		count;
 }			list_spec;
 
 void		ft_bzero(void *s, size_t n);
@@ -50,19 +51,18 @@ int			ft_isdigit(char c);
 int			ft_numlen(intmax_t n, int c);
 char		*ft_strjoin_free(char *s1, char *s2, int opt);
 
-void		print_address(va_list *args, list_spec cr);
+void		print_address(va_list *args, list_spec *cr);
 int			ft_printf(const char *fmt, ...);
-void		print_digits(va_list *args, list_spec cr);
-void		print_digits_unsigned(va_list *args, list_spec cr, int type);
-void		print_str(va_list *args, list_spec cr);
-void		print_c(va_list *args, list_spec cr);
+void		print_digits(va_list *args, list_spec *cr);
+void		print_digits_unsigned(va_list *args, list_spec *cr, int type);
+void		print_str(va_list *args, list_spec *cr);
+void		print_c(va_list *args, list_spec *cr);
 char		*print_unichar(int symb);
-void		print_unicode(va_list *args, list_spec cr);
-int			main_call(const char **fmt, va_list *args);
-list_spec	save_spec(const char **fmt);
+void		print_unicode(va_list *args, list_spec *cr);
+void		main_call(const char **fmt, va_list *args, list_spec *cr);
 int			check_type(char c);
 void		fill_align(const char *fmt, list_spec *cr);
-void		fill_width_precs(const char *fmt, list_spec *cr);
+void		fill_width(const char *fmt, list_spec *cr, va_list *args);
 void		fill_mod(const char *fmt, list_spec *cr);
 void		fill_type(const char **fmt, list_spec *cr);
 char		*ft_itoabase(uintmax_t c, int sys, int rg);

@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 15:43:07 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/30 13:19:47 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/30 15:17:00 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,5 @@ void				print_digits(va_list *args, list_spec *cr)
 		cr->str = ft_strjoin_free(" ", cr->str, 2);
 	if (cr->width)
 		cr->str = if_width(*cr);
-	ft_putstr(BLUE);
 	cr->count += write(1, cr->str, ft_strlen(cr->str));
-	ft_putstr(RESET);
 }

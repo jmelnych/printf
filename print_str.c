@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 16:04:47 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/30 14:37:52 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/01/30 15:13:04 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ static void	wr_zero_or_space(list_spec *cr)
 		cr->str = ft_strjoin_free(cr->str, " ", 1);
 	while (!cr->flag[0] && cr->width > (int)ft_strlen(cr->str))
 		cr->str = ft_strjoin_free(" ", cr->str, 2);
-	ft_putstr(GREEN);
 	cr->count += write(1, cr->str, ft_strlen(cr->str));
-	ft_putstr(RESET);
 	free(cr->str);
 }
 
@@ -61,15 +59,11 @@ void		print_c(va_list *args, list_spec *cr)
 	cr->width -= 1;
 	if (cr->flag[0] == 1)
 	{
-		ft_putstr(YELLOW);
 		write(1, &c, 1);
-		ft_putstr(RESET);
 	}
 	wr_zero_or_space(cr);
 	if (cr->flag[0] != 1)
 	{
-		ft_putstr(YELLOW);
 		cr->count += write(1, &c, 1);
-		ft_putstr(RESET);
 	}
 }

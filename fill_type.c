@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 08:50:58 by imelnych          #+#    #+#             */
-/*   Updated: 2018/02/01 18:22:31 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/02/02 19:54:21 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	fill_mod(const char *fmt, list_spec *cr)
 	}
 }
 
-void	fill_type(const char **fmt, list_spec *cr)
+int	fill_type(const char **fmt, list_spec *cr)
 {
 	int i;
 
@@ -111,11 +111,35 @@ void	fill_type(const char **fmt, list_spec *cr)
 	cr->type = 0;
 	while (**fmt != '\0')
 	{
-		if (check_type(**fmt))
+		if (check_flags(**fmt))
+			(*fmt)++;
+		else if (check_type(**fmt))
 		{
 			cr->type = **fmt;
-			break ;
+			return (1);
 		}
-		(*fmt)++;
+		else 
+			return (2);
 	}
+	return (0);
 }
+
+// int	fill_type(const char **fmt, list_spec *cr)
+// {
+// 	int i;
+
+// 	i = 0;
+// 	cr->type = 0;
+// 	while (**fmt != '\0')
+// 	{
+// 		if (check_type(**fmt))
+// 		{
+// 			cr->type = **fmt;
+// 			break ;
+// 		}
+// 		(*fmt)++;
+// 	}
+// 	if (**fmt)
+// 		return (1);
+// 	return (0);
+// }

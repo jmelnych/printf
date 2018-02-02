@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 13:20:40 by imelnych          #+#    #+#             */
-/*   Updated: 2018/02/01 18:28:48 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/02/02 20:29:39 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	ft_printf(const char *fmt, ...)
 		 	fmt++;
 		 	main_call(&fmt, &args, &cr);
 		}
+		//if else (*fmt == '%')
 		else
 			cr.count += write(1, fmt, 1);
 		fmt++;
@@ -36,6 +37,9 @@ int	ft_printf(const char *fmt, ...)
 
 int main(void)
 {
+	char *strlen;
+
+	strlen = 0;
 	setlocale(LC_ALL, "en_US.UTF-8");
 	//printf("%d\n", L'ȱ');
 	//printf("one === %-+11.5d two === %s\n", 529, "abc"); //+00529____
@@ -64,8 +68,8 @@ int main(void)
 	//printf("coun my = %d\n", ft_printf("MY FNC: %s\n", "jfjsfsfjs"));
 	//printf("coun or = %d\n", printf("ORIGIN: %05.3S\n", L"αȱ"));
 	//printf("coun my = %d\n", ft_printf("MY FNC: %05.3S\n", L"αȱ"));
-	printf("\tcount or = %d\n",    printf("ORIGIN: %03.2d", -1));
-	printf("\tcount my = %d\n", ft_printf("MY FNC: %03.2d", -1));
+	printf("\tcount or = %d\n",    printf("ORIGIN: % hk"));
+	printf("\tcount my = %d\n", ft_printf("MY FNC: % hk"));
 	// printf("ORIGIN: %05%\n");
 	// ft_printf("MY FNC: %05%\n");
 	return (0);

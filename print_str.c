@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 16:04:47 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/31 15:50:47 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/02/02 20:41:28 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,15 @@ void		print_c(va_list *args, list_spec *cr)
 {
 	char c;
 
-	cr->str = ft_strdup("");
+	//cr->str = ft_strdup("");
 	if (cr->type == '%')
 		c = '%';
+	else if (cr->type == 'y')
+	{
+		//printf("cr->flag[0] ==== %d\n", cr->flag[0]);
+		c = cr->str[0];
+		//free(cr->str);
+	}
 	else
 		c = (char)va_arg(*args, int);
 	cr->width -= 1;
@@ -62,7 +68,7 @@ void		print_c(va_list *args, list_spec *cr)
 		cr->count += write(1, &c, 1);
 	}
 	wr_zero_or_space(cr);
-	if (cr->flag[0] != 1)
+	if(cr->flag[0] != 1 && cr->type != 'y')
 	{
 		cr->count += write(1, &c, 1);
 	}

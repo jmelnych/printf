@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 15:43:07 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/30 15:17:00 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/02/02 13:20:01 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static list_spec	if_precision(list_spec cr)
 {
 	if (cr.flag[0] == 2)
 		cr.flag[0] = 0;
-	if (*cr.str == '-' && cr.precs > (int)ft_strlen(cr.str))
+	if (*cr.str == '-' && cr.precs > (int)ft_strlen(cr.str) - 1)
 	{
 		*cr.str = '0';
 		//printf("CR>STR LEN FOR digit: %d\n", (int)ft_strlen(cr.str));
@@ -79,6 +79,11 @@ static	char		*if_width(list_spec cr)
 void				print_digits(va_list *args, list_spec *cr)
 {
 	cr->str = trans_type_digit(args, *cr);
+	if (!cr->precs && cr->str[0] == '0')		
+	{
+		free(cr->str);
+		cr->str = ft_strdup("");
+	}
 	if (cr->precs != -1)
 		*cr = if_precision(*cr);
 	if (cr->flag[1] == 1 && *cr->str != '-')

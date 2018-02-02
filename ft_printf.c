@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 13:20:40 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/31 16:14:10 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/02/01 18:28:48 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_printf(const char *fmt, ...)
 			cr.count += write(1, fmt, 1);
 		fmt++;
 	}
-	va_end(args); 
+	va_end(args);
 	return (cr.count);
 }
 
@@ -56,20 +56,16 @@ int main(void)
 	// printf("ORIGIN: %.3d\n", -2222211);
 	// ft_printf("MY FNC: %.3d\n", -2222211);
 	//ft_printf("MY FNC: %.*d\n", -2222211.5);
-
 	//printf("coun or = %d\n", printf("ORIGIN: %.**d\n", 5, 8, -211));
 	//printf("coun my = %d", ft_printf("MY FNC: %.**d\n", 5, 8, -211));
 	//printf("coun or = %d\n", printf("ORIGIN: %.xd\n", -211));
 	//printf("coun my = %d\n", ft_printf("MY FNC: %.xd\n", -211));
 	//printf("coun or = %d\n", printf("ORIGIN: %s\n", "jfjsfsfjs"));
 	//printf("coun my = %d\n", ft_printf("MY FNC: %s\n", "jfjsfsfjs"));
-
 	//printf("coun or = %d\n", printf("ORIGIN: %05.3S\n", L"αȱ"));
 	//printf("coun my = %d\n", ft_printf("MY FNC: %05.3S\n", L"αȱ"));
-
-	printf("\tcoun or = %d\n", printf("ORIGIN: %10x", 42));
-	printf("\tcoun my = %d\n", ft_printf("MY FNC: %10x", 42));
-
+	printf("\tcount or = %d\n",    printf("ORIGIN: %03.2d", -1));
+	printf("\tcount my = %d\n", ft_printf("MY FNC: %03.2d", -1));
 	// printf("ORIGIN: %05%\n");
 	// ft_printf("MY FNC: %05%\n");
 	return (0);

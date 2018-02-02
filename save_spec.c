@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/04 17:42:39 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/30 14:39:38 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/02/01 18:37:51 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void		save_spec(const char **fmt, va_list *args, list_spec *cr)
 void			main_call(const char **fmt, va_list *args, list_spec *cr)
 {
 	save_spec(fmt, args, cr);
+	printf("\nTEST: %d\n", cr->flag[2]);
 	if (cr->type == 'd' || cr->type == 'i' || cr->type == 'D')
 		print_digits(args, cr);
 	if (cr->type == 'u' || cr->type == 'U' || cr->type == 'o' || cr->type == 'O'

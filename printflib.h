@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 16:40:26 by imelnych          #+#    #+#             */
-/*   Updated: 2018/02/02 20:25:11 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/02/03 13:54:39 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <locale.h>
 # define FL 3
-# define TP "sSpdDioOuUxXcCb%"
+# define TP "sSpdDioOuUxXcCb"
 # define FLAGS "lh0123456789-+ #*.zj"
 /* Color palette */
 # define BLUE "\033[1;34m"
@@ -61,7 +61,7 @@ void		print_str(va_list *args, list_spec *cr);
 void		print_c(va_list *args, list_spec *cr);
 char		*print_unichar(int symb);
 void		print_unicode(va_list *args, list_spec *cr);
-void		main_call(const char **fmt, va_list *args, list_spec *cr);
+int			main_call(const char **fmt, va_list *args, list_spec *cr);
 int			check_type(char c);
 int			check_flags(char c);
 void		fill_align(const char *fmt, list_spec *cr);

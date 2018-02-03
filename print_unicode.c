@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/25 12:12:00 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/30 17:29:54 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/02/03 15:47:16 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,16 @@ void			print_unicode(va_list *args, list_spec *cr)
 
 	if (cr->type == 'C')
 	{
-		sb = va_arg(*args, int);
+		if(!(sb = va_arg(*args, int)))
+		{
+			// printf("%s\n", "bsflsjfsfsjsjfsfj");
+			// cr->str = ft_strnew(1);
+			// cr->str[0] = sb;
+			cr->count += write(1, "", 1);
+
+		}
 		cr->str = print_unichar(sb);
+		//printf("RES ===%s\n", cr->str);
 	}
 	if (cr->type == 'S')
 		cr->str = print_unistr(args, cr);

@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 08:50:58 by imelnych          #+#    #+#             */
-/*   Updated: 2018/02/02 19:54:21 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/02/03 14:12:18 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ void	fill_align(const char *fmt, list_spec *cr)
 static void	fill_precs(const char *fmt, list_spec *cr, va_list *args, int *i)
 {
 	cr->precs = 0;
-	*i += 1;
+	while (fmt[*i] == '.')
+		*i += 1;
 	while (fmt[*i])
 	{
 		if (ft_isdigit(fmt[*i]))
@@ -64,7 +65,7 @@ void	fill_width(const char *fmt, list_spec *cr, va_list *args)
 	cr->precs = -1;
 	while (fmt[i] != '\0' && !check_type(fmt[i]))
 	{
-		if (ft_isdigit(fmt[i]))
+		if (ft_isdigit(fmt[i]) && fmt[i] != '0')
 		{
 			cr->width = ft_atoi(fmt + i);
 			while (ft_isdigit(fmt[i]))

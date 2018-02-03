@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 13:20:40 by imelnych          #+#    #+#             */
-/*   Updated: 2018/02/02 20:29:39 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/02/03 15:50:32 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ int	ft_printf(const char *fmt, ...)
 	va_start(args, fmt); //to where, what-last param
 	while (*fmt)
 	{
-		if (*fmt == '%' && *(fmt + 1) != '\0')
+		if (*fmt == '%')
 		{
 		 	fmt++;
-		 	main_call(&fmt, &args, &cr);
+		 	if(!(main_call(&fmt, &args, &cr)))
+		 		break ;
 		}
-		//if else (*fmt == '%')
 		else
 			cr.count += write(1, fmt, 1);
 		fmt++;
@@ -40,6 +40,9 @@ int main(void)
 	char *strlen;
 
 	strlen = 0;
+	int i;
+
+	i = 0;
 	setlocale(LC_ALL, "en_US.UTF-8");
 	//printf("%d\n", L'ȱ');
 	//printf("one === %-+11.5d two === %s\n", 529, "abc"); //+00529____
@@ -68,8 +71,8 @@ int main(void)
 	//printf("coun my = %d\n", ft_printf("MY FNC: %s\n", "jfjsfsfjs"));
 	//printf("coun or = %d\n", printf("ORIGIN: %05.3S\n", L"αȱ"));
 	//printf("coun my = %d\n", ft_printf("MY FNC: %05.3S\n", L"αȱ"));
-	printf("\tcount or = %d\n",    printf("ORIGIN: % hk"));
-	printf("\tcount my = %d\n", ft_printf("MY FNC: % hk"));
+	printf("\tcount org = %d\n",    printf("ORIGIN: %p", &i));
+	printf("\tcount myf = %d\n", ft_printf("MY FNC: %p", &i));
 	// printf("ORIGIN: %05%\n");
 	// ft_printf("MY FNC: %05%\n");
 	return (0);

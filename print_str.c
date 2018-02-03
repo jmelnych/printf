@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 16:04:47 by imelnych          #+#    #+#             */
-/*   Updated: 2018/02/02 20:41:28 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/02/03 15:31:14 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,29 +47,26 @@ void		print_str(va_list *args, list_spec *cr)
 	wr_zero_or_space(cr);
 }
 
+
+
 void		print_c(va_list *args, list_spec *cr)
 {
 	char c;
-
-	//cr->str = ft_strdup("");
-	if (cr->type == '%')
-		c = '%';
-	else if (cr->type == 'y')
+	if (cr->type == 'y')
 	{
-		//printf("cr->flag[0] ==== %d\n", cr->flag[0]);
 		c = cr->str[0];
-		//free(cr->str);
+		free(cr->str);
 	}
 	else
-		c = (char)va_arg(*args, int);
-	cr->width -= 1;
-	if (cr->flag[0] == 1)
 	{
-		cr->count += write(1, &c, 1);
+		if (!(c = (char)va_arg(*args, int)))
+			cr->width -= 1;
 	}
+	cr->str = ft_strnew(1);
+	cr->str[0] = c;
+	if (!c && cr->flag[0] == 1)
+		cr->count += write(1, "", 1);
 	wr_zero_or_space(cr);
-	if(cr->flag[0] != 1 && cr->type != 'y')
-	{
-		cr->count += write(1, &c, 1);
-	}
+	if (!c && cr->flag[0] != 1)
+		cr->count += write(1, "", 1);
 }

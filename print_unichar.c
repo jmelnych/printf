@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 13:34:41 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/27 16:18:03 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/02/03 15:47:40 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static char	*fill_sub_mask(char *str, int bit, int len, char *f_mask)
 		res[i--] = (char)ft_atoibase(sub_mask);
 		free(sub_mask);
 	}
+	i = 0;
 	j = 8;
 	while (len--)
 		f_mask[--j] = str[len];

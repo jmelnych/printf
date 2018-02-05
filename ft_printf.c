@@ -14,8 +14,8 @@
 
 int	ft_printf(const char *fmt, ...)
 {
-	va_list args;
-	list_spec cr;
+	va_list		args;
+	list_spec	cr;
 
 	cr.count = 0;
 	va_start(args, fmt);
@@ -23,9 +23,9 @@ int	ft_printf(const char *fmt, ...)
 	{
 		if (*fmt == '%')
 		{
-		 	fmt++;
-		 	if(!(main_call(&fmt, &args, &cr)))
-		 		break ;
+			fmt++;
+			if (!(main_call(&fmt, &args, &cr)))
+				break ;
 		}
 		else
 			cr.count += write(1, fmt, 1);

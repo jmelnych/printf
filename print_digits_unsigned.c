@@ -12,7 +12,7 @@
 
 #include "printflib.h"
 
-static char *trans_type_u_digit(va_list *args, list_spec cr, int type)
+static char	*trans_type_u_digit(va_list *args, list_spec cr, int type)
 {
 	int system;
 
@@ -46,7 +46,7 @@ void		print_digits_unsigned(va_list *args, list_spec *cr, int type)
 	cr->str = trans_type_u_digit(args, *cr, type);
 	if (cr->str[0] == '0' && (cr->type == 'x' || cr->type == 'X'))
 		cr->flag[2] = 0;
-	if (!cr->precs && cr->str[0] == '0' && cr->flag[2] == 0)		
+	if (!cr->precs && cr->str[0] == '0' && cr->flag[2] == 0)	
 	{
 		free(cr->str);
 		cr->str = ft_strdup("");
@@ -68,7 +68,8 @@ void		print_digits_unsigned(va_list *args, list_spec *cr, int type)
 		cr->str = ft_strjoin_free(cr->str, " ", 1);
 	if (cr->flag[2] == 1 && (type == 'x' || type == 'X'))
 		cr->str = ft_strjoin_free(c, cr->str, 2);
-	while (cr->flag[0] != 2 && cr->width && cr->flag[2] && cr->width + 2 > (int)ft_strlen(cr->str) && (type != 'o' && type != 'O'))
+	while (cr->flag[0] != 2 && cr->width && cr->flag[2] && cr->width + 2 > (int)ft_strlen(cr->str) 
+		&& (type != 'o' && type != 'O'))
 		cr->str = ft_strjoin_free(" ", cr->str, 2);
 	while (cr->flag[0] != 2 && cr->width && cr->width > (int)ft_strlen(cr->str))
 		cr->str = ft_strjoin_free(" ", cr->str, 2);

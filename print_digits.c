@@ -78,7 +78,7 @@ static	char		*if_width(list_spec cr)
 void				print_digits(va_list *args, list_spec *cr)
 {
 	cr->str = trans_type_digit(args, *cr);
-	if (!cr->precs && cr->str[0] == '0')		
+	if (!cr->precs && cr->str[0] == '0')
 	{
 		free(cr->str);
 		cr->str = ft_strdup("");

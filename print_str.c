@@ -47,11 +47,10 @@ void		print_str(va_list *args, list_spec *cr)
 	wr_zero_or_space(cr);
 }
 
-
-
 void		print_c(va_list *args, list_spec *cr)
 {
 	char c;
+
 	if (cr->type == 'y')
 	{
 		c = cr->str[0];

@@ -72,6 +72,7 @@ char			*ft_itoabase(uintmax_t nb, int sys, int rg)
 {
 	int			i;
 	char		*res;
+
 	res = NULL;
 	if (sys == 1)
 		return (sigitoa(nb, res, 0));

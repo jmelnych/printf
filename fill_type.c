@@ -36,7 +36,7 @@ void	fill_align(const char *fmt, list_spec *cr)
 	}
 }
 
-static void	fill_precs(const char *fmt, list_spec *cr, va_list *args, int *i)
+void	fill_precs(const char *fmt, list_spec *cr, va_list *args, int *i)
 {
 	cr->precs = 0;
 	while (fmt[*i] == '.')
@@ -74,7 +74,8 @@ void	fill_width(const char *fmt, list_spec *cr, va_list *args)
 		}
 		else if (fmt[i] == '*')
 		{
-			if ((cr->width = va_arg(*args, int)) < 0 && (cr->flag[0] = 1))
+			if (((cr->width = va_arg(*args, int)) < 0)
+				&& (cr->flag[0] = 1))
 				cr->width *= -1;
 		}
 		else if (fmt[i] == '.')
@@ -104,7 +105,7 @@ void	fill_mod(const char *fmt, list_spec *cr)
 	}
 }
 
-int	fill_type(const char **fmt, list_spec *cr)
+int		fill_type(const char **fmt, list_spec *cr)
 {
 	int i;
 
@@ -119,9 +120,8 @@ int	fill_type(const char **fmt, list_spec *cr)
 			cr->type = **fmt;
 			return (1);
 		}
-		else 
+		else
 			return (2);
 	}
 	return (0);
 }
-

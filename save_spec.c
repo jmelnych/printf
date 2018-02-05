@@ -21,7 +21,7 @@ static int		save_spec(const char **fmt, va_list *args, list_spec *cr)
 	fill_mod(*fmt, cr);
 	res = fill_type(fmt, cr);
 	if (!res)
-		return(0);
+		return (0);
 	else if (res == 2)
 	{
 		cr->type = 'y';
@@ -31,9 +31,9 @@ static int		save_spec(const char **fmt, va_list *args, list_spec *cr)
 	return (1);
 }
 
-int			main_call(const char **fmt, va_list *args, list_spec *cr)
+int				main_call(const char **fmt, va_list *args, list_spec *cr)
 {
-	if(!(save_spec(fmt, args, cr)))
+	if (!(save_spec(fmt, args, cr)))
 		return (0);
 	if (cr->type == 'd' || cr->type == 'i' || cr->type == 'D')
 		print_digits(args, cr);

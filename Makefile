@@ -6,7 +6,7 @@
 #    By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/19 13:18:52 by imelnych          #+#    #+#              #
-#    Updated: 2018/02/03 15:50:05 by imelnych         ###   ########.fr        #
+#    Updated: 2018/02/04 20:30:21 by imelnych         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ run:
 	@$(MAKE) $(OBJ_files)
 	@$(LIB_AR)
 	ranlib $(TARGET)
-	gcc -o $(EXC) $(FLAGS) $(SRC_files)
+	# gcc -o $(EXC) $(FLAGS) $(SRC_files)
 
 clean:
 	/bin/rm -rf $(OBJ_DIR)

@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/22 17:18:53 by imelnych          #+#    #+#             */
-/*   Updated: 2018/01/30 14:25:43 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/02/04 20:34:34 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void		print_address(va_list *args, list_spec *cr)
 		cr->str = ft_itoabase((unsigned short)va_arg(*args, int), 16, 'a');
 	else if (cr->mod == 1)
 		cr->str = ft_itoabase((unsigned char)va_arg(*args, int), 16, 'a');
+	//cr->str = ft_strjoin_free("7ffe", cr->str, 2);
 	if (cr->precs != -1)
 	{
 		if (cr->flag[0] == 2)

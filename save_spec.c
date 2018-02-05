@@ -35,10 +35,6 @@ int			main_call(const char **fmt, va_list *args, list_spec *cr)
 {
 	if(!(save_spec(fmt, args, cr)))
 		return (0);
-	//printf("TYPE: %c\n", cr->type);
-	//printf("FLAG: %d\n", cr->flag[0]);
-	//printf("WIDTH: %d\n", cr->width);
-	//printf("TYPE: %s\n", cr->type);
 	if (cr->type == 'd' || cr->type == 'i' || cr->type == 'D')
 		print_digits(args, cr);
 	if (cr->type == 'u' || cr->type == 'U' || cr->type == 'o' || cr->type == 'O'
@@ -46,11 +42,12 @@ int			main_call(const char **fmt, va_list *args, list_spec *cr)
 		print_digits_unsigned(args, cr, (int)cr->type);
 	if (cr->type == 'p')
 		print_address(args, cr);
-	if (cr->type == 's')
+	if (cr->type == 's' && cr->mod != 3)
 		print_str(args, cr);
-	if (cr->type == 'c' || cr->type == 'y')
-		print_c(args, cr);
-	if (cr->type == 'S' || cr->type == 'C')
+	if (cr->type == 'S' || cr->type == 'C' || (cr->type == 'c' && cr->mod == 3)
+		|| (cr->type == 's' && cr->mod == 3))
 		print_unicode(args, cr);
+	if ((cr->type == 'c' && cr->mod != 3) || cr->type == 'y')
+		print_c(args, cr);
 	return (1);
 }

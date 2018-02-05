@@ -34,7 +34,6 @@ static list_spec	if_precision(list_spec cr)
 	if (*cr.str == '-' && cr.precs > (int)ft_strlen(cr.str) - 1)
 	{
 		*cr.str = '0';
-		//printf("CR>STR LEN FOR digit: %d\n", (int)ft_strlen(cr.str));
 		while (cr.precs > (int)ft_strlen(cr.str))
 			cr.str = ft_strjoin_free("0", cr.str, 2);
 		cr.str = ft_strjoin_free("-", cr.str, 2);
@@ -84,7 +83,7 @@ void				print_digits(va_list *args, list_spec *cr)
 		free(cr->str);
 		cr->str = ft_strdup("");
 	}
-	if (cr->precs != -1)
+	if (cr->precs > -1)
 		*cr = if_precision(*cr);
 	if (cr->flag[1] == 1 && *cr->str != '-')
 		cr->str = ft_strjoin_free("+", cr->str, 2);
@@ -93,4 +92,5 @@ void				print_digits(va_list *args, list_spec *cr)
 	if (cr->width)
 		cr->str = if_width(*cr);
 	cr->count += write(1, cr->str, ft_strlen(cr->str));
+	free(cr->str);
 }

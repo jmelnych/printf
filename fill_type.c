@@ -125,22 +125,3 @@ int	fill_type(const char **fmt, list_spec *cr)
 	return (0);
 }
 
-// int	fill_type(const char **fmt, list_spec *cr)
-// {
-// 	int i;
-
-// 	i = 0;
-// 	cr->type = 0;
-// 	while (**fmt != '\0')
-// 	{
-// 		if (check_type(**fmt))
-// 		{
-// 			cr->type = **fmt;
-// 			break ;
-// 		}
-// 		(*fmt)++;
-// 	}
-// 	if (**fmt)
-// 		return (1);
-// 	return (0);
-// }

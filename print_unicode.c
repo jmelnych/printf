@@ -36,22 +36,25 @@ static char		*print_unistr(va_list *args, list_spec *cr)
 void			print_unicode(va_list *args, list_spec *cr)
 {
 	int		sb;
+	va_list cp;
 
-	if (cr->type == 'C')
+	va_copy(cp, *args);
+	if (cr->type == 'C' || cr->type == 'c')
 	{
 		if(!(sb = va_arg(*args, int)))
-		{
-			// printf("%s\n", "bsflsjfsfsjsjfsfj");
-			// cr->str = ft_strnew(1);
-			// cr->str[0] = sb;
 			cr->count += write(1, "", 1);
-
-		}
 		cr->str = print_unichar(sb);
-		//printf("RES ===%s\n", cr->str);
 	}
-	if (cr->type == 'S')
-		cr->str = print_unistr(args, cr);
+	if (cr->type == 'S' || cr->type == 's')
+	{
+		if (!(cr->str = va_arg(cp, wchar_t *)))
+		{
+			cr->str = ft_strdup("(null)");
+			va_arg(*args, void *);
+		}
+		else
+			cr->str = print_unistr(args, cr);
+	}
 	while (cr->flag[0] == 2 && cr->width > (int)ft_strlen(cr->str))
 		cr->str = ft_strjoin_free("0", cr->str, 2);
 	while (cr->flag[0] == 1 && cr->width > (int)ft_strlen(cr->str))

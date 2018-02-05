@@ -73,4 +73,5 @@ void		print_digits_unsigned(va_list *args, list_spec *cr, int type)
 	while (cr->flag[0] != 2 && cr->width && cr->width > (int)ft_strlen(cr->str))
 		cr->str = ft_strjoin_free(" ", cr->str, 2);
 	cr->count += write(1, cr->str, ft_strlen(cr->str));
+	free(cr->str);
 }

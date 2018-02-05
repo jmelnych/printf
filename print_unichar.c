@@ -76,5 +76,7 @@ char		*print_unichar(int symb)
 	bit = find_bit(len);
 	f_mask = fill_first_mask(bit);
 	res = fill_sub_mask(str, bit, len, f_mask);
+	free(str);
+	free(f_mask);
 	return (res);
 }

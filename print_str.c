@@ -12,7 +12,7 @@
 
 #include "printflib.h"
 
-static void	wr_zero_or_space(list_spec *cr)
+static void	wr_zero_or_space(t_list_spec *cr)
 {
 	while (cr->flag[0] == 2 && cr->width > (int)ft_strlen(cr->str))
 		cr->str = ft_strjoin_free("0", cr->str, 2);
@@ -24,7 +24,7 @@ static void	wr_zero_or_space(list_spec *cr)
 	free(cr->str);
 }
 
-void		print_str(va_list *args, list_spec *cr)
+void		print_str(va_list *args, t_list_spec *cr)
 {
 	char *buff;
 
@@ -47,7 +47,7 @@ void		print_str(va_list *args, list_spec *cr)
 	wr_zero_or_space(cr);
 }
 
-void		print_c(va_list *args, list_spec *cr)
+void		print_c(va_list *args, t_list_spec *cr)
 {
 	char c;
 

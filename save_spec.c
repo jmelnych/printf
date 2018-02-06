@@ -12,7 +12,7 @@
 
 #include "printflib.h"
 
-static int		save_spec(const char **fmt, va_list *args, list_spec *cr)
+static int		save_spec(const char **fmt, va_list *args, t_list_spec *cr)
 {
 	int			res;
 
@@ -31,7 +31,7 @@ static int		save_spec(const char **fmt, va_list *args, list_spec *cr)
 	return (1);
 }
 
-int				main_call(const char **fmt, va_list *args, list_spec *cr)
+int				main_call(const char **fmt, va_list *args, t_list_spec *cr)
 {
 	if (!(save_spec(fmt, args, cr)))
 		return (0);

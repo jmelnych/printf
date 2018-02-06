@@ -12,7 +12,7 @@
 
 #include "printflib.h"
 
-void		print_address(va_list *args, list_spec *cr)
+void		print_address(va_list *args, t_list_spec *cr)
 {
 	cr->str = ft_itoabase(va_arg(*args, uintmax_t), 16, 'a');
 	if (cr->precs != -1)

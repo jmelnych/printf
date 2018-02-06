@@ -35,7 +35,6 @@ $(NAME):
 	@$(MAKE) $(OBJ_files)
 	@$(LIB_AR)
 	ranlib $(NAME)
-	# gcc -o $(EXC) $(FLAGS) $(SRC_files) main.c
 
 clean:
 	/bin/rm -rf $(OBJ_DIR)

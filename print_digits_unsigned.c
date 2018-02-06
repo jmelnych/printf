@@ -12,7 +12,7 @@
 
 #include "printflib.h"
 
-static char	*trans_type_u_digit(va_list *args, list_spec cr, int type)
+static char	*trans_type_u_digit(va_list *args, t_list_spec cr, int type)
 {
 	int system;
 
@@ -36,7 +36,27 @@ static char	*trans_type_u_digit(va_list *args, list_spec cr, int type)
 	return (cr.str);
 }
 
-void		print_digits_unsigned(va_list *args, list_spec *cr, int type)
+static void	check_print(t_list_spec *cr, int type, char *c)
+{
+	while (cr->flag[0] == 2 && cr->width > (int)ft_strlen(cr->str))
+		cr->str = ft_strjoin_free("0", cr->str, 2);
+	if (cr->flag[2] == 1 && (type == 'o' || type == 'O') && *cr->str != '0')
+		cr->str = ft_strjoin_free("0", cr->str, 2);
+	while (cr->flag[0] == 1 && cr->width > (int)ft_strlen(cr->str))
+		cr->str = ft_strjoin_free(cr->str, " ", 1);
+	if (cr->flag[2] == 1 && (type == 'x' || type == 'X'))
+		cr->str = ft_strjoin_free(c, cr->str, 2);
+	while (cr->flag[0] != 2 && cr->width && cr->flag[2] &&
+		cr->width + 2 > (int)ft_strlen(cr->str)
+		&& (type != 'o' && type != 'O'))
+		cr->str = ft_strjoin_free(" ", cr->str, 2);
+	while (cr->flag[0] != 2 && cr->width && cr->width > (int)ft_strlen(cr->str))
+		cr->str = ft_strjoin_free(" ", cr->str, 2);
+	cr->count += write(1, cr->str, ft_strlen(cr->str));
+	free(cr->str);
+}
+
+void		print_digits_unsigned(va_list *args, t_list_spec *cr, int type)
 {
 	char c[3];
 
@@ -46,7 +66,7 @@ void		print_digits_unsigned(va_list *args, list_spec *cr, int type)
 	cr->str = trans_type_u_digit(args, *cr, type);
 	if (cr->str[0] == '0' && (cr->type == 'x' || cr->type == 'X'))
 		cr->flag[2] = 0;
-	if (!cr->precs && cr->str[0] == '0' && cr->flag[2] == 0)	
+	if (!cr->precs && cr->str[0] == '0' && cr->flag[2] == 0)
 	{
 		free(cr->str);
 		cr->str = ft_strdup("");
@@ -60,19 +80,5 @@ void		print_digits_unsigned(va_list *args, list_spec *cr, int type)
 	}
 	if (cr->flag[2] == 1 && (type == 'x' || type == 'X'))
 		cr->width -= 2;
-	while (cr->flag[0] == 2 && cr->width > (int)ft_strlen(cr->str))
-		cr->str = ft_strjoin_free("0", cr->str, 2);
-	if (cr->flag[2] == 1 && (type == 'o' || type == 'O') && *cr->str != '0')
-		cr->str = ft_strjoin_free("0", cr->str, 2);
-	while (cr->flag[0] == 1 && cr->width > (int)ft_strlen(cr->str))
-		cr->str = ft_strjoin_free(cr->str, " ", 1);
-	if (cr->flag[2] == 1 && (type == 'x' || type == 'X'))
-		cr->str = ft_strjoin_free(c, cr->str, 2);
-	while (cr->flag[0] != 2 && cr->width && cr->flag[2] && cr->width + 2 > (int)ft_strlen(cr->str) 
-		&& (type != 'o' && type != 'O'))
-		cr->str = ft_strjoin_free(" ", cr->str, 2);
-	while (cr->flag[0] != 2 && cr->width && cr->width > (int)ft_strlen(cr->str))
-		cr->str = ft_strjoin_free(" ", cr->str, 2);
-	cr->count += write(1, cr->str, ft_strlen(cr->str));
-	free(cr->str);
+	check_print(cr, type, c);
 }

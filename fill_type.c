@@ -12,7 +12,7 @@
 
 #include "printflib.h"
 
-void	fill_align(const char *fmt, list_spec *cr)
+void	fill_align(const char *fmt, t_list_spec *cr)
 {
 	int i;
 
@@ -36,7 +36,7 @@ void	fill_align(const char *fmt, list_spec *cr)
 	}
 }
 
-void	fill_precs(const char *fmt, list_spec *cr, va_list *args, int *i)
+void	fill_precs(const char *fmt, t_list_spec *cr, va_list *args, int *i)
 {
 	cr->precs = 0;
 	while (fmt[*i] == '.')
@@ -56,7 +56,7 @@ void	fill_precs(const char *fmt, list_spec *cr, va_list *args, int *i)
 	}
 }
 
-void	fill_width(const char *fmt, list_spec *cr, va_list *args)
+void	fill_width(const char *fmt, t_list_spec *cr, va_list *args)
 {
 	int i;
 
@@ -84,7 +84,7 @@ void	fill_width(const char *fmt, list_spec *cr, va_list *args)
 	}
 }
 
-void	fill_mod(const char *fmt, list_spec *cr)
+void	fill_mod(const char *fmt, t_list_spec *cr)
 {
 	int i;
 
@@ -105,7 +105,7 @@ void	fill_mod(const char *fmt, list_spec *cr)
 	}
 }
 
-int		fill_type(const char **fmt, list_spec *cr)
+int		fill_type(const char **fmt, t_list_spec *cr)
 {
 	int i;
 

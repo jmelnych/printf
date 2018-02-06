@@ -12,7 +12,7 @@
 
 #include "printflib.h"
 
-static char			*trans_type_digit(va_list *args, list_spec cr)
+static char			*trans_type_digit(va_list *args, t_list_spec cr)
 {
 	if (cr.mod == 4)
 		cr.str = ft_itoabase(va_arg(*args, intmax_t), 1, 0);
@@ -27,7 +27,7 @@ static char			*trans_type_digit(va_list *args, list_spec cr)
 	return (cr.str);
 }
 
-static list_spec	if_precision(list_spec cr)
+static t_list_spec	if_precision(t_list_spec cr)
 {
 	if (cr.flag[0] == 2)
 		cr.flag[0] = 0;
@@ -46,7 +46,7 @@ static list_spec	if_precision(list_spec cr)
 	return (cr);
 }
 
-static	char		*if_width(list_spec cr)
+static	char		*if_width(t_list_spec cr)
 {
 	int		i;
 	char	c[2];
@@ -75,7 +75,7 @@ static	char		*if_width(list_spec cr)
 	return (cr.str);
 }
 
-void				print_digits(va_list *args, list_spec *cr)
+void				print_digits(va_list *args, t_list_spec *cr)
 {
 	cr->str = trans_type_digit(args, *cr);
 	if (!cr->precs && cr->str[0] == '0')

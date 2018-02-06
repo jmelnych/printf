@@ -15,7 +15,7 @@
 int	ft_printf(const char *fmt, ...)
 {
 	va_list		args;
-	list_spec	cr;
+	t_list_spec	cr;
 
 	cr.count = 0;
 	va_start(args, fmt);

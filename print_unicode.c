@@ -12,7 +12,7 @@
 
 #include "printflib.h"
 
-static char		*print_unistr(va_list *args, list_spec *cr)
+static char		*print_unistr(va_list *args, t_list_spec *cr)
 {
 	wchar_t	*s;
 	char	*res;
@@ -33,12 +33,13 @@ static char		*print_unistr(va_list *args, list_spec *cr)
 	return (res);
 }
 
-static char		*unicode_s(va_list *args, list_spec *cr)
+static char		*unicode_s(va_list *args, t_list_spec *cr)
 {
 	va_list cp;
+	wchar_t	*s;
 
 	va_copy(cp, *args);
-	if (!(cr->str = va_arg(cp, wchar_t *)))
+	if (!(s = va_arg(cp, wchar_t *)))
 	{
 		cr->str = ft_strdup("(null)");
 		va_arg(*args, void *);
@@ -50,7 +51,7 @@ static char		*unicode_s(va_list *args, list_spec *cr)
 	return (cr->str);
 }
 
-void			print_unicode(va_list *args, list_spec *cr)
+void			print_unicode(va_list *args, t_list_spec *cr)
 {
 	int		sb;
 

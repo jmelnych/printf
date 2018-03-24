@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/29 13:14:41 by imelnych          #+#    #+#             */
-/*   Updated: 2018/02/05 12:18:01 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/03/21 11:13:43 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static	char	*transbase(uintmax_t nbr, int base, int reg)
 
 static	char	*sigitoa(intmax_t nb, char *res, int i)
 {
-	i = ft_numlen(nb, 1);
+	i = ft_numlen_max(nb, 1);
 	if (nb < -9223372036854775807)
 		return (ft_strdup("-9223372036854775808"));
 	if (!(res = (char *)malloc(i + 1)))
@@ -78,7 +78,7 @@ char			*ft_itoabase(uintmax_t nb, int sys, int rg)
 		return (sigitoa(nb, res, 0));
 	else if (sys)
 		return (transbase(nb, sys, rg));
-	i = ft_numlen(nb, 0);
+	i = ft_numlen_max(nb, 0);
 	if (!(res = (char *)malloc(i + 1)))
 		return (0);
 	res[i] = '\0';

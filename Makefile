@@ -6,7 +6,7 @@
 #    By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/19 13:18:52 by imelnych          #+#    #+#              #
-#    Updated: 2018/02/05 12:34:23 by imelnych         ###   ########.fr        #
+#    Updated: 2018/03/21 11:11:02 by imelnych         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ EXC = ft_printf
 FLAGS = -Wall -Wextra -Wextra
 OBJ_DIR	= ./obj
 SRC_files = ft_printf.c ft_putchar.c ft_strlen.c ft_strnew.c ft_bzero.c \
-			ft_isdigit.c save_spec.c ft_atoi.c check_type.c fill_type.c \
-			ft_numlen.c print_digits.c print_digits_unsigned.c ft_atoibase.c \
+			ft_isdigit_char.c save_spec.c ft_atoi.c check_type.c fill_type.c \
+			ft_numlen_max.c print_digits.c print_digits_unsigned.c ft_atoibase.c \
 			print_str.c ft_itoabase.c ft_strdup.c ft_strjoin_free.c ft_putstr.c\
 			print_address.c print_unichar.c print_unicode.c \
 

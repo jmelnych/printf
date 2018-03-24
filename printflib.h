@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/02 16:40:26 by imelnych          #+#    #+#             */
-/*   Updated: 2018/02/03 13:54:39 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/03/21 11:20:21 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ size_t		ft_strlen(const char *str);
 char		*ft_strdup(const char *s1);
 char		*ft_strnew(size_t size);
 void		ft_putstr(char const *s);
-int			ft_isdigit(char c);
-int			ft_numlen(intmax_t n, int c);
+int			ft_isdigit_char(char c);
+int			ft_numlen_max(intmax_t n, int c);
 char		*ft_strjoin_free(char *s1, char *s2, int opt);
 
 void		print_address(va_list *args, t_list_spec *cr);

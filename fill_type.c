@@ -6,7 +6,7 @@
 /*   By: imelnych <imelnych@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 08:50:58 by imelnych          #+#    #+#             */
-/*   Updated: 2018/02/03 14:12:18 by imelnych         ###   ########.fr       */
+/*   Updated: 2018/03/21 11:03:16 by imelnych         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	fill_align(const char *fmt, t_list_spec *cr)
 	{
 		if (fmt[i] == '-')
 			cr->flag[0] = 1;
-		else if (fmt[i] == '0' && !ft_isdigit(fmt[i - 1]) && !cr->flag[0])
+		else if (fmt[i] == '0' && !ft_isdigit_char(fmt[i - 1]) && !cr->flag[0])
 			cr->flag[0] = 2;
 		if (fmt[i] == '+')
 			cr->flag[1] = 1;
@@ -43,10 +43,10 @@ void	fill_precs(const char *fmt, t_list_spec *cr, va_list *args, int *i)
 		*i += 1;
 	while (fmt[*i])
 	{
-		if (ft_isdigit(fmt[*i]))
+		if (ft_isdigit_char(fmt[*i]))
 		{
 			cr->precs = ft_atoi(fmt + *i);
-			while (ft_isdigit(fmt[*i]))
+			while (ft_isdigit_char(fmt[*i]))
 				*i += 1;
 			*i -= 1;
 		}
@@ -65,10 +65,10 @@ void	fill_width(const char *fmt, t_list_spec *cr, va_list *args)
 	cr->precs = -1;
 	while (fmt[i] != '\0' && !check_type(fmt[i]))
 	{
-		if (ft_isdigit(fmt[i]) && fmt[i] != '0')
+		if (ft_isdigit_char(fmt[i]) && fmt[i] != '0')
 		{
 			cr->width = ft_atoi(fmt + i);
-			while (ft_isdigit(fmt[i]))
+			while (ft_isdigit_char(fmt[i]))
 				i++;
 			i--;
 		}

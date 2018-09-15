@@ -1,7 +1,12 @@
 # Project Overview
-Printf is a 42 Project, because we're all tired of using putnbr and putstr.
+An implementation of libc's printf function.
 
 # About ft_printf
+The ft_printf function is prototyped as follows:
+```C
+int ft_printf(const char *format, ...);
+```
+
 ## The function manage: 
 * the flags #0-+, space and *
 * the following conversions: sSpdDioOuUxXcC and b to binary
